@@ -48,6 +48,13 @@ QUICK_SECTION_HEADING_BEFORE_PT = 6
 QUICK_PAGE_MARGIN_INCH = 0.72
 # Horizontal gap between two columns in Quick Resume tables (points).
 QUICK_TABLE_COL_GUTTER_PT = 14
+# Extra air before Certifications block (Quick PDF): ~1.35× body line (~11pt).
+QUICK_CERT_SECTION_PRE_BREAK_PT = 15
+# Vertical gap between certification rows (distinct entries; points).
+QUICK_CERT_ROW_GAP_PT = 8
+# Certifications column divider (Quick PDF only).
+QUICK_CERT_LINE_W_PT = 0.35
+QUICK_CERT_DIVIDER_PAD_PT = 5
 
 
 def _core_competency_lines(items: list[str], *, max_lines: int = 2) -> list[str]:
@@ -337,9 +344,13 @@ def _quick_education_cell_markup(edu: dict[str, Any]) -> str:
 
 
 def _quick_cert_cell_markup(name: str, date: str) -> str:
+    """Bold credential title; date on second line, smaller and muted."""
     nm = _escape(_strip_markup_tags(name))
     dt = _escape(_strip_markup_tags(date))
-    return f"<b>{nm}</b> — {dt}"
+    return (
+        f"<b>{nm}</b><br/>"
+        f'<font name="Helvetica" size="9" color="#6B6B6B">{dt}</font>'
+    )
 
 
 def build_resume_full_docx(data: dict[str, Any], path: Path) -> None:
@@ -649,6 +660,19 @@ def _rl_styles_quick() -> dict[str, ParagraphStyle]:
         spaceBefore=0,
         spaceAfter=2,
     )
+    # Certifications cells: two-line entries (title + date); slightly roomier leading.
+    styles["quick_cert_table_cell"] = ParagraphStyle(
+        "quick_cert_table_cell",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=round(fs * 1.18, 2),
+        alignment=TA_LEFT,
+        leftIndent=0,
+        rightIndent=0,
+        spaceBefore=0,
+        spaceAfter=0,
+    )
     return styles
 
 
@@ -672,6 +696,26 @@ def _quick_two_column_table_style() -> TableStyle:
     )
 
 
+def _quick_two_column_table_style_certs() -> TableStyle:
+    """Certifications table: light vertical divider; padding around divider; row gap."""
+    pad = QUICK_CERT_DIVIDER_PAD_PT
+    line = colors.HexColor("#D4D4D4")
+    gap = QUICK_CERT_ROW_GAP_PT
+    return TableStyle(
+        [
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 0),
+            ("RIGHTPADDING", (0, 0), (0, -1), pad),
+            ("LEFTPADDING", (1, 0), (1, -1), pad),
+            ("RIGHTPADDING", (1, 0), (1, -1), 0),
+            ("TOPPADDING", (0, 0), (-1, -1), 1),
+            ("BOTTOMPADDING", (0, 0), (1, 0), gap),
+            ("BOTTOMPADDING", (0, 1), (-1, -1), 3),
+            ("LINEAFTER", (0, 0), (0, -1), QUICK_CERT_LINE_W_PT, line),
+        ]
+    )
+
+
 def _append_quick_certifications_two_column(
     story: list[Any], styles: dict[str, ParagraphStyle], certifications: list[dict[str, Any]]
 ) -> None:
@@ -679,7 +723,7 @@ def _append_quick_certifications_two_column(
     Two-column cert grid: row 1 = both Clear credentials; row 2 = CLAD + IB PYP.
     Left-aligned cells; improves scan without merging with Education.
     """
-    cell_st = styles["quick_table_cell"]
+    cell_st = styles["quick_cert_table_cell"]
     w_use = _quick_pdf_usable_width_pt()
     gutter = QUICK_TABLE_COL_GUTTER_PT
     col_w = (w_use - gutter) / 2
@@ -698,7 +742,7 @@ def _append_quick_certifications_two_column(
             right = Paragraph("", cell_st)
         rows.append([left, right])
     tbl = Table(rows, colWidths=[col_w, col_w], hAlign="LEFT")
-    tbl.setStyle(_quick_two_column_table_style())
+    tbl.setStyle(_quick_two_column_table_style_certs())
     story.append(tbl)
 
 
@@ -820,8 +864,9 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
     for line in data["summary"]:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
 
+    story.append(Spacer(1, QUICK_CERT_SECTION_PRE_BREAK_PT))
     story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
-    story.append(Spacer(1, 1))
+    story.append(Spacer(1, 2))
     _append_quick_certifications_two_column(story, styles, data["certifications"])
 
     story.append(Paragraph(_escape("SIGNATURE IMPACT"), styles["h1"]))
