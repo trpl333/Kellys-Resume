@@ -19,7 +19,7 @@ Chapman Field Supervisor: formal evaluator for Special Education and Multiple Su
 - OUSD Olive: concurrent SDC + RSP/Inclusion ties IEP goals and co-teaching to bell-to-bell reality.
 - Mission Hills English: two-year move from avoidance to engagement; later novel electives—student-cited turning point (privacy-safe).
 - Chino Anna Borba: two high-risk-profile students—trust rebuilt; families back at school; formative student reflections (privacy-safe).
-- Riley volunteer: Revolutionary War walk-through at scale; reading data drove fifth-grade and SPED intervention cycles.
+- CUSD Riley Elementary volunteer: Revolutionary War walk-through at scale; reading data drove fifth-grade and SPED intervention cycles.
 - Chino grades 1–6: Master Teacher, RTI, SELPA behavior team, science fair, SSC, textbook adoption—cross-site scope.
 - IEP documents, classroom evidence, and district assessments feed one adjustment loop—not calendar drift.
 - Chapman observe–conference–document rhythm turns standards into same-week teaching adjustments in partner schools.
@@ -41,12 +41,12 @@ SDC & RSP/Inclusion; IEP development & compliance; MTSS/RTI teaming; UDL-informe
 
 Orange Unified School District, Olive Elementary · Orange, CA · August 2017–Present
 
-- Shapes Olive Elementary’s concurrent SDC + RSP/Inclusion system so service models, minutes, and measurable IEP outcomes stay synchronized across whole-group, small-group, and pull-aside formats.
-- Steers MTSS/RTI and UDL cycles so progress monitoring triggers timely scaffold shifts while keeping grade-level access in play when the data warrants it.
-- Co-plans with general education so inclusion minutes materialize in live lessons and transitions—closing the gap between IEP promises and classroom execution.
-- Runs predictable family communication rhythms on goals, behavior plans, and IEP milestones so caregivers see momentum before surprises reach home or the meeting table.
-- Programs calm routines and paraprofessional choreography around transitions—predictable starts, positive expectations, safe movement—so instructional minutes stay intact.
-- Represents caseload students in assessments and site/district special education forums when decisions reset services, placements, or long-range outcomes.
+- Olive Elementary: SDC + RSP/Inclusion programming keeps models, minutes, and measurable goals aligned across formats.
+- MTSS/RTI + UDL: progress data drives timely scaffold shifts; preserves grade-level access when evidence supports it.
+- Gen-ed co-planning lands inclusion in live lessons—tightens IEP-to-classroom execution.
+- Family communication rhythms on goals, behaviors, and IEP windows surface momentum before meetings.
+- Transition routines and para coverage stabilize participation and protect core instructional minutes.
+- Represents caseload students when site or district decisions reset services, placements, or trajectories.
 
 ### Field Supervisor, Special Education & Multiple Subject Credential Candidates
 
@@ -68,7 +68,7 @@ Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate �
 
 ### Volunteer — Fifth-Grade Classroom & Special Education Support
 
-Chino Unified School District, Riley Elementary · Chino, CA · June 2013–March 2016
+Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016
 
 - Volunteered in a fifth-grade classroom during a career transition, reinforcing instruction and daily routines alongside the classroom teacher.
 - Planned and led a schoolwide fifth-grade Revolutionary War walk-through, coordinating stations, materials, and rotations for the full grade level.
@@ -101,9 +101,15 @@ Chino Unified School District, Glenmeade Elementary · Chino Hills, CA · Octobe
 
 ## Education
 
-- **M.A. Special Education** — Chapman University, Orange, CA — December 2018
-- **Multiple Subject Teaching Credential** — Chapman University, Orange, CA — January 1991
-- **B.S. Child Development** — CSU Fullerton, Fullerton, CA — January 1990
+- **M.A. Special Education**
+  - Chapman University, Orange, CA
+  - December 2018
+- **Multiple Subject Teaching Credential**
+  - Chapman University, Orange, CA
+  - January 1991
+- **B.S. Child Development**
+  - CSU Fullerton, Fullerton, CA
+  - January 1990
 
 ## References (available upon request)
 
