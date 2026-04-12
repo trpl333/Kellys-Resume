@@ -9,7 +9,7 @@ const tiles = [
     icon: "ri-group-line",
     number: "3",
     title: "Inclusion · RSP · SDC",
-    sub: "Resource Specialist Program (RSP), Special Day Class (SDC), and general-ed inclusion",
+    sub: "Three TK–8 delivery models: general-education inclusion, Resource Specialist Program (RSP), and Special Day Class (SDC).",
   },
   {
     icon: "ri-award-line",
