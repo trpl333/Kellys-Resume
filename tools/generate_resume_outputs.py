@@ -45,6 +45,9 @@ QUICK_PARA_SPACE_AFTER_PT = 2
 QUICK_BULLET_SPACE_AFTER_PT = 2
 QUICK_ROLE_SPACE_BEFORE_PT = 4
 QUICK_SECTION_HEADING_BEFORE_PT = 6
+# Extra air after name/contact before first SUMMARY heading (Quick PDF only).
+# ~1.25× quick body line (~11pt) so header reads separate from body; keeps 2-page target with h1 spaceBefore.
+QUICK_SUMMARY_SECTION_PRE_BREAK_PT = int(round(BODY_FONT_PT * QUICK_BODY_LINE_SPACING * 1.25))
 QUICK_PAGE_MARGIN_INCH = 0.72
 # Horizontal gap between two columns in Quick Resume tables (points).
 QUICK_TABLE_COL_GUTTER_PT = 14
@@ -888,6 +891,7 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
         )
     )
 
+    story.append(Spacer(1, QUICK_SUMMARY_SECTION_PRE_BREAK_PT))
     story.append(Paragraph(_escape("SUMMARY"), styles["h1"]))
     for line in data["summary"]:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
