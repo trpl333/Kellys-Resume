@@ -1,30 +1,10 @@
-const education = [
-  {
-    degree: "M.A. Special Education",
-    institution: "Chapman University",
-    location: "Orange, CA",
-    date: "Dec 2018",
-  },
-  {
-    degree: "Multiple Subject Teaching Credential",
-    institution: "Chapman University",
-    location: "Orange, CA",
-    date: "Jan 1991",
-  },
-  {
-    degree: "B.S. Child Development",
-    institution: "California State University, Fullerton",
-    location: "Fullerton, CA",
-    date: "Jan 1990",
-  },
-];
+import resume from "@data/kelly_resume_source.json";
 
-const credentials = [
-  { name: "Clear Education Specialist Credential (Mild/Moderate)", date: "Jun 2019" },
-  { name: "Multiple Subject Teaching Credential (Renewal)", date: "Jan 1, 2021" },
-  { name: "CLAD (Cross-cultural, Language and Academic Development)", date: "Nov 2006" },
-  { name: "IB PYP (International Baccalaureate Primary Years Programme)", date: "Mar 2007" },
-];
+type Edu = { degree: string; school: string; location: string; date: string };
+type Cred = { name: string; date: string };
+
+const education = resume.education as Edu[];
+const credentials = resume.certifications as Cred[];
 
 export default function EducationBlock() {
   return (
@@ -40,7 +20,7 @@ export default function EducationBlock() {
               <div>
                 <p className="text-base font-semibold text-[#2D2D2D] font-['Inter']">{edu.degree}</p>
                 <p className="text-sm text-gray-500 font-['Inter']">
-                  {edu.institution} · {edu.location}
+                  {edu.school} · {edu.location}
                 </p>
               </div>
               <p className="text-sm font-medium text-[#1E3A5F] whitespace-nowrap font-['Inter']">

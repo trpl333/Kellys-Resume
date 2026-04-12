@@ -25,10 +25,70 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "kelly_resume_source.json"
 OUT_DIR = ROOT / "outputs"
+RESUME_DIR = ROOT / "resume"
+PUBLIC_DIR = ROOT / "public"
 
 
 def load_data() -> dict[str, Any]:
     return json.loads(DATA_PATH.read_text(encoding="utf-8"))
+
+
+def write_kelly_resume_markdown(data: dict[str, Any], path: Path, label: str) -> None:
+    """Single-file resume for version control (Kellys-Resume source of truth)."""
+    c = data["contact"]
+    name = data["meta"]["candidate_name"]
+    lines: list[str] = [
+        f"# {name} — Resume ({label})",
+        "",
+        "> Source: `data/kelly_resume_source.json` in this repo. Facts only; student stories are privacy-safe.",
+        "",
+        "## Header",
+        "",
+        f"- **{name}**",
+        f"- {c['city_state_zip']} · {c['phone']} · {c['email']}",
+        "",
+        "## Summary",
+        "",
+    ]
+    for p in data["summary"]:
+        lines.append(p)
+        lines.append("")
+    lines.extend(["## Signature Impact", ""])
+    for b in data["signature_impact"]:
+        lines.append(f"- {b}")
+    lines.extend(["", "## Core Competencies", ""])
+    lines.append("; ".join(data["core_competencies"]))
+    lines.extend(["", "## Certifications & Credentials", ""])
+    for item in data["certifications"]:
+        lines.append(f"- **{item['name']}** — {item['date']}")
+    lines.extend(["", "## Professional Experience", ""])
+    for role in data["experience"]:
+        lines.append(f"### {role['title']}")
+        lines.append("")
+        sub = role["employer"]
+        if role.get("school_site"):
+            sub += f", {role['school_site']}"
+        sub += f" · {role['location']} · {role['start']}–{role['end']}"
+        if role.get("employment_note"):
+            sub += f" · *{role['employment_note']}*"
+        if role.get("date_note"):
+            sub += f" · *{role['date_note']}*"
+        lines.append(sub)
+        lines.append("")
+        for b in role["bullets"]:
+            lines.append(f"- {b}")
+        lines.append("")
+    lines.extend(["## Education", ""])
+    for edu in data["education"]:
+        lines.append(f"- **{edu['degree']}** — {edu['school']}, {edu['location']} — {edu['date']}")
+    lines.append("")
+    refs = data.get("references_available") or []
+    if refs:
+        lines.extend(["## References (available upon request)", ""])
+        for r in refs:
+            lines.append(f"- **{r['name']}** — {r['title']}; {r.get('email', '')}; {r.get('phone', '')}")
+        lines.append("")
+    path.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
 def set_doc_defaults(document: Document) -> None:
@@ -207,13 +267,13 @@ def build_executive_snapshot_docx(data: dict[str, Any], path: Path) -> None:
 
     add_heading(document, "Roles at a Glance")
     roles = [
-        "Education Specialist (SDC / RSP / Inclusion) | OUSD, Olive Elementary | 2017 – Present",
-        "Field Supervisor, Credential Candidates | Chapman University | 2020 – Present",
-        "Special Education Instructional Aide | Saddleback Valley USD | 2016 – 2017",
-        "Volunteer, Classroom & SPED Support | Riley Elementary, CUSD | 2013 – 2016 [NEEDS CONFIRMATION: exact dates]",
-        "Junior High English Teacher | Mission Hills Christian School | 2008 – 2013",
-        "Elementary Teacher (Gr. 1–6) / Master Teacher | Chino USD, Anna Borba | 1994 – 2008",
-        "Sixth Grade Teacher | Glenmeade Elementary, Chino Hills | 1991 – 1994",
+        "Education Specialist (SDC + RSP/Inclusion) | Orange USD, Olive Elementary | Aug 2017 – Present",
+        "Field Supervisor (SPED & Multiple Subject) | Chapman University | Aug 2020 – Present (caseload-based)",
+        "SPED Instructional Aide | Saddleback Valley USD, RSM Intermediate | Mar 2016 – Jun 2017",
+        "Volunteer | Riley Elementary, Chino USD | Jun 2013 – Mar 2016",
+        "Junior High English Teacher | Mission Hills Christian School | Jun 2008 – Jun 2013",
+        "Elementary Teacher | Chino USD, Anna Borba Elementary | Aug 1994 – Jun 2008",
+        "Sixth Grade Teacher | Glenmeade Elementary, Chino Hills | Oct 1991 – Aug 1994",
     ]
     for line in roles:
         add_bullet(document, line)
@@ -221,7 +281,7 @@ def build_executive_snapshot_docx(data: dict[str, Any], path: Path) -> None:
     add_heading(document, "Credentials (quick view)")
     cred_lines = [
         f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']})",
-        "Clear Education Specialist Credential, Mild/Moderate (June 2019) | Multiple Subject Credential (renewal on file: Jan 2021) | IB PYP (Mar 2007) | CLAD (Nov 2006)",
+        "Clear Education Specialist Mild/Moderate (June 2019) | Multiple Subject Teaching Credential (Renewal January 1, 2021) | IB PYP (March 2007) | CLAD (November 2006)",
     ]
     for line in cred_lines:
         p3 = document.add_paragraph(line)
@@ -268,20 +328,20 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
         "body",
         parent=base["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=11.5,
+        fontSize=9,
+        leading=10.8,
         alignment=TA_LEFT,
-        spaceAfter=5,
+        spaceAfter=4,
     )
     styles["bullet"] = ParagraphStyle(
         "bullet",
         parent=base["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=11.5,
-        leftIndent=14,
-        firstLineIndent=-10,
-        spaceAfter=4,
+        fontSize=9,
+        leading=10.8,
+        leftIndent=12,
+        firstLineIndent=-8,
+        spaceAfter=3,
     )
     return styles
 
@@ -321,10 +381,8 @@ def build_resume_v1_pdf(data: dict[str, Any], path: Path) -> None:
     story.append(Paragraph(_escape(" | ".join(data["core_competencies"])), styles["body"]))
 
     story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
-    for item in data["certifications"]:
-        story.append(
-            Paragraph(_escape(f"- {item['name']} — {item['date']}"), styles["bullet"])
-        )
+    cred_compact = " | ".join(f"{item['name']} — {item['date']}" for item in data["certifications"])
+    story.append(Paragraph(_escape(cred_compact), styles["body"]))
 
     story.append(Paragraph(_escape("PROFESSIONAL EXPERIENCE"), styles["h1"]))
     for role in data["experience"]:
@@ -357,10 +415,10 @@ def build_resume_v1_pdf(data: dict[str, Any], path: Path) -> None:
     doc = SimpleDocTemplate(
         str(path),
         pagesize=LETTER,
-        leftMargin=0.7 * inch,
-        rightMargin=0.7 * inch,
-        topMargin=0.5 * inch,
-        bottomMargin=0.5 * inch,
+        leftMargin=0.65 * inch,
+        rightMargin=0.65 * inch,
+        topMargin=0.45 * inch,
+        bottomMargin=0.45 * inch,
     )
     doc.build(story)
 
@@ -396,13 +454,13 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
 
     story.append(Paragraph(_escape("ROLES AT A GLANCE"), styles["h1"]))
     roles = [
-        "Education Specialist (SDC / RSP / Inclusion) | OUSD, Olive Elementary | 2017 – Present",
-        "Field Supervisor, Credential Candidates | Chapman University | 2020 – Present",
-        "Special Education Instructional Aide | Saddleback Valley USD | 2016 – 2017",
-        "Volunteer, Classroom & SPED Support | Riley Elementary, CUSD | 2013 – 2016 [NEEDS CONFIRMATION: exact dates]",
-        "Junior High English Teacher | Mission Hills Christian School | 2008 – 2013",
-        "Elementary Teacher (Gr. 1–6) / Master Teacher | Chino USD, Anna Borba | 1994 – 2008",
-        "Sixth Grade Teacher | Glenmeade Elementary, Chino Hills | 1991 – 1994",
+        "Education Specialist (SDC + RSP/Inclusion) | Orange USD, Olive Elementary | Aug 2017 – Present",
+        "Field Supervisor (SPED & Multiple Subject) | Chapman University | Aug 2020 – Present (caseload-based)",
+        "SPED Instructional Aide | Saddleback Valley USD, RSM Intermediate | Mar 2016 – Jun 2017",
+        "Volunteer | Riley Elementary, Chino USD | Jun 2013 – Mar 2016",
+        "Junior High English Teacher | Mission Hills Christian School | Jun 2008 – Jun 2013",
+        "Elementary Teacher | Chino USD, Anna Borba Elementary | Aug 1994 – Jun 2008",
+        "Sixth Grade Teacher | Glenmeade Elementary, Chino Hills | Oct 1991 – Aug 1994",
     ]
     for line in roles:
         story.append(Paragraph(_escape(f"- {line}"), styles["bullet"]))
@@ -410,8 +468,8 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
     story.append(Paragraph(_escape("CREDENTIALS (QUICK VIEW)"), styles["h1"]))
     cred = (
         f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']}) — "
-        "Clear Education Specialist Credential, Mild/Moderate (June 2019); Multiple Subject Credential "
-        "(renewal on file: Jan 2021); IB PYP (Mar 2007); CLAD (Nov 2006)"
+        "Clear Education Specialist Mild/Moderate (June 2019); Multiple Subject Teaching Credential "
+        "(Renewal January 1, 2021); IB PYP (March 2007); CLAD (November 2006)"
     )
     story.append(Paragraph(_escape(cred), styles["body"]))
 
@@ -428,11 +486,12 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
 
 def main() -> None:
     OUT_DIR.mkdir(exist_ok=True)
+    RESUME_DIR.mkdir(exist_ok=True)
+    PUBLIC_DIR.mkdir(exist_ok=True)
     data = load_data()
 
-    web_data = ROOT / "kelly-web" / "data" / "kelly_resume_source.json"
-    if web_data.parent.exists():
-        web_data.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_kelly_resume_markdown(data, RESUME_DIR / "kelly_resume_v3.md", "v3")
+    write_kelly_resume_markdown(data, RESUME_DIR / "kelly_resume_v2.md", "v2")
 
     build_resume_v1_docx(data, OUT_DIR / "resume_v1.docx")
     build_executive_snapshot_docx(data, OUT_DIR / "executive_snapshot.docx")
@@ -440,11 +499,12 @@ def main() -> None:
     build_resume_v1_pdf(data, OUT_DIR / "resume_v1.pdf")
     build_executive_snapshot_pdf(data, OUT_DIR / "executive_snapshot.pdf")
 
-    web_pdf = ROOT / "kelly-web" / "public" / "resume.pdf"
-    if web_pdf.parent.exists():
-        shutil.copyfile(OUT_DIR / "resume_v1.pdf", web_pdf)
+    shutil.copyfile(OUT_DIR / "resume_v1.pdf", PUBLIC_DIR / "resume.pdf")
 
     print("Wrote:")
+    print(" -", RESUME_DIR / "kelly_resume_v2.md")
+    print(" -", RESUME_DIR / "kelly_resume_v3.md")
+    print(" -", PUBLIC_DIR / "resume.pdf")
     for name in [
         "resume_v1.docx",
         "executive_snapshot.docx",

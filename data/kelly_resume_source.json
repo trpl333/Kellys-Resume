@@ -1,14 +1,15 @@
 {
   "meta": {
     "candidate_name": "Kelly Peterson",
-    "last_updated": "2026-04-11",
+    "last_updated": "2026-04-12",
+    "resume_version": "v3",
     "sources": [
       "Kelly Peterson Updated Resume 2020 (1).docx",
       "Kelly_Peterson_Resume_Portfolio.docx",
       "Chapman Field Supervisor Description for Resume'.docx"
     ],
-    "transcripts_note": "The files /mnt/data/Kelly 5th grad cousin stories_original.txt and /mnt/data/Kelly mark desmond story_original.txt were not found in this workspace. Story language below matches the privacy-safe STAR cards in Kelly_Peterson_Resume_Portfolio.docx only.",
-    "flags": ["[NEEDS CONFIRMATION: professional email for resume, site, and mailto links]"]
+    "transcripts_note": "Story language matches privacy-safe STAR summaries in Kelly_Peterson_Resume_Portfolio.docx (no raw transcripts in repo).",
+    "flags": ["[NEEDS CONFIRMATION: professional email for resume header and web contact]"]
   },
   "contact": {
     "phone": "949.556.5378",
@@ -18,63 +19,65 @@
   },
   "summary": [
     "Special education teacher and university field supervisor with 26+ years across SDC, RSP/Inclusion, and general education (TK–8) in public and private schools.",
-    "Master’s-trained in special education (Chapman University, 2018) with a Clear Education Specialist Credential (Mild/Moderate); supports IEP-aligned instruction, MTSS/RTI, UDL, and inclusive collaboration.",
-    "Coaches and evaluates credential candidates for Chapman University (CalTPA aligned to California’s 13 TPEs), including program-level readiness recommendations for completion (approval/non-approval); known for steady partnership with students and families and durable literacy confidence growth."
+    "M.A. in Special Education (Chapman, 2018) and Clear Education Specialist (Mild/Moderate); instruction centers on legally defensible IEPs, MTSS/RTI teaming, and UDL-informed planning.",
+    "Chapman field supervisor for Special Education and Multiple Subject candidates: combines coaching with formal evaluation, CalTPA guidance aligned to California’s 13 TPEs, and completion readiness recommendations (approval/non-approval)."
   ],
   "signature_impact": [
-    "Chapman University Field Supervisor (Special Education & Multiple Subject candidates): coaches and evaluates candidates during clinical practice and student teaching; supports CalTPA using the 13 TPEs; observes, conferences, and documents formative/summative feedback; collaborates with mentor teachers and program leadership; recommends completion readiness (approval/non-approval).",
-    "Mission Hills Christian School (Junior High English): supported a long-term shift from active reading avoidance to engagement across two school years; in high school the student independently chose novel-study coursework and credited the earlier confidence foundation as the reason they were willing to try.",
-    "Chino Unified School District (Anna Borba Elementary): supported two students who had been labeled as behavior concerns through relationship-first check-ins, barrier reduction, and interest-based engagement; strengthened family–school partnership and long-horizon student trajectories (privacy-safe details only).",
-    "Orange Unified School District (Olive Elementary): designs and delivers individualized, standards-based instruction for students with mild/moderate disabilities across SDC and RSP/Inclusion service models with MTSS/RTI and UDL-aligned practices.",
-    "Riley Elementary (Chino USD, volunteer): volunteered in a fifth-grade classroom; organized an entire grade-level Revolutionary War walk-through program; conducted weekly fifth-grade reading assessments and supported reading assessments in the Special Education department for intervention planning and progress monitoring.",
-    "Scope across settings: long-term elementary assignments (grades 1–6, including a combination class), junior high English, sixth-grade teaching, science fair coordination, and ACSI-related student academic competitions (as reflected in resume history)."
+    "Evaluated and coached Chapman Special Education and Multiple Subject candidates—anchoring feedback to CalTPA and all 13 TPEs—and issued approval/non-approval program readiness calls on completion.",
+    "Runs Orange USD (Olive) caseloads across SDC + RSP/Inclusion with MTSS/RTI and UDL, keeping mild/moderate services tight to measurable IEP goals and workable general education partnerships.",
+    "Mission Hills junior high English: moved a reluctant reader from avoidance to steady engagement over two years; the student later chose high school novel-study electives and pointed to this stretch as the turning point (privacy-safe).",
+    "Anna Borba (Chino USD): built trust with two students flagged as high-risk behavior concerns; engagement improved, families re-engaged at school after long gaps, and both students later described the steady support as formative (privacy-safe).",
+    "Riley Elementary volunteer: led a grade-level Revolutionary War walk-through; ran weekly fifth-grade reading assessments and supported Special Education reading assessments that fed intervention plans and documentation.",
+    "Turns IEP paperwork, classroom evidence, and district assessments into a single feedback loop—so services and family communication change when students change, not when the calendar changes.",
+    "At Chapman, runs a disciplined observe–conference–document cycle so program standards convert into concrete teaching adjustments in partner schools.",
+    "Chino USD tenure: Master Teacher / Grade-Level Coordinator (fifth); RTI; West End SELPA academic/behavior team; science fair; SSC; textbook adoption; PQR; DARE collaboration; IB Early Years—impact beyond one classroom."
   ],
   "core_competencies": [
-    "SDC, RSP/Inclusion, and mainstream collaboration",
-    "IEP development and standards-based individualized instruction",
-    "MTSS/RTI, progress monitoring, and assessment administration",
-    "UDL, lesson planning, differentiation, and small-group instruction",
-    "Classroom management and positive behavior supports",
-    "Family communication and partnership",
-    "Paraprofessional direction and classroom systems",
-    "Clinical supervision, observation, and written evaluation",
-    "CalTPA and TPE-aligned coaching for credential candidates",
-    "Committee leadership and site/district initiatives"
+    "SDC & RSP/Inclusion",
+    "IEP development & compliance",
+    "MTSS/RTI teaming",
+    "UDL-informed instruction",
+    "Progress monitoring & assessment",
+    "Family partnership",
+    "Paraprofessional leadership",
+    "Formal observation & written evaluation (13 TPEs)",
+    "CalTPA-aligned coaching",
+    "Site & district committees"
   ],
   "certifications": [
     {
-      "name": "Clear Education Specialist Instructional Credential, Mild/Moderate",
+      "name": "Clear Education Specialist Mild/Moderate",
       "date": "June 2019"
     },
     {
-      "name": "Multiple Subject Teaching Credential (Clear); renewal on file",
-      "date": "Renewal: January 1, 2021 [NEEDS CONFIRMATION: confirm current renewal cycle on CTC printout]"
+      "name": "Multiple Subject Teaching Credential",
+      "date": "Renewal January 1, 2021"
     },
     {
-      "name": "IB Certification, Primary Years Programme (PYP)",
+      "name": "IB PYP",
       "date": "March 2007"
     },
     {
-      "name": "CLAD Certificate",
+      "name": "CLAD",
       "date": "November 2006"
     }
   ],
   "education": [
     {
-      "degree": "Master of Arts, Special Education",
+      "degree": "M.A. Special Education",
       "school": "Chapman University",
       "location": "Orange, CA",
       "date": "December 2018"
     },
     {
-      "degree": "Multiple Subjects Teaching Credential",
+      "degree": "Multiple Subject Teaching Credential",
       "school": "Chapman University",
       "location": "Orange, CA",
       "date": "January 1991"
     },
     {
-      "degree": "Bachelor of Science, Child Development",
-      "school": "California State University, Fullerton",
+      "degree": "B.S. Child Development",
+      "school": "CSU Fullerton",
       "location": "Fullerton, CA",
       "date": "January 1990"
     }
@@ -84,14 +87,18 @@
       "employer": "Orange Unified School District",
       "school_site": "Olive Elementary",
       "location": "Orange, CA",
-      "title": "Education Specialist (SDC; RSP/Inclusion)",
+      "title": "Education Specialist (SDC + RSP/Inclusion)",
       "start": "August 2017",
       "end": "Present",
       "bullets": [
-        "Develop and implement individualized, standards-based instruction aligned to IEP goals for students with mild/moderate disabilities across SDC and RSP/Inclusion service models.",
-        "Apply MTSS/RTI and UDL-aligned practices to plan measurable goals, deliver small-group and individualized instruction, monitor progress, administer assessments, and partner with general education teachers on inclusion supports.",
-        "Maintain proactive family communication; participate in IEP meetings, placement discussions, and required documentation; lead a structured classroom environment and direct assigned paraprofessionals; support positive behavior and safe participation; attend site/district special education meetings as needed."
-      ]
+        "Leads programming across SDC and RSP/Inclusion so each IEP matches the learner’s actual day—whole group, small group, and individualized formats as appropriate.",
+        "Uses MTSS/RTI teaming and UDL-informed planning to set measurable goals, respond to progress data, and adjust scaffolds while keeping access to grade-level expectations in view.",
+        "Co-plans with general education teachers so inclusion supports are workable in the real bell schedule, not only in the IEP binder.",
+        "Keeps families ahead of surprises: clear, steady communication about goals, behavior supports, and next steps tied to IEP timelines.",
+        "Runs calm classroom systems and directs assigned paraprofessionals toward consistent routines, positive expectations, and safe participation in class and transitions.",
+        "Carries assessments and participates in site and district special education meetings when decisions affect outcomes or placements for assigned students."
+      ],
+      "story_bullets": []
     },
     {
       "employer": "Chapman University",
@@ -100,12 +107,16 @@
       "title": "Field Supervisor, Special Education & Multiple Subject Credential Candidates",
       "start": "August 2020",
       "end": "Present",
-      "employment_note": "As-needed / caseload-based",
+      "employment_note": "Caseload-based",
       "bullets": [
-        "Supervise graduate candidates during clinical practice and student teaching; provide coaching and formal evaluation aligned to program standards and the 13 California Teaching Performance Expectations (TPEs).",
-        "Conduct observations and pre/post conferences; deliver documented formative and summative feedback; support CalTPA-related expectations across lesson design, differentiation, classroom management, assessment, and portfolio milestones; collaborate with mentor teachers and university program leadership; complete required documentation and participate in evaluation meetings.",
-        "Provide program-level readiness recommendations for credential advancement and completion (approval/non-approval)."
-      ]
+        "Serves as university field supervisor for Special Education and Multiple Subject candidates, holding formal evaluation authority alongside structured coaching across clinical practice and student teaching.",
+        "Anchors written and conference feedback to California’s 13 TPEs and CalTPA milestones—lesson design, differentiation, classroom management, assessment, and portfolio requirements.",
+        "Conducts formal observations with pre- and post-conferences; records formative and summative judgments with evidence and specific next steps candidates can implement immediately.",
+        "Coordinates with mentor teachers and program leadership on concerns, documentation quality, and placement fitness while upholding confidentiality and ethical practice.",
+        "Participates in program evaluation meetings where readiness for added responsibility and milestone completion are decided.",
+        "Submits program-level readiness recommendations for credential advancement and completion, including approval and non-approval outcomes tied to documented performance."
+      ],
+      "story_bullets": []
     },
     {
       "employer": "Saddleback Valley Unified School District",
@@ -115,20 +126,22 @@
       "start": "March 2016",
       "end": "June 2017",
       "bullets": [
-        "Supported students with disabilities in small-group and individual instruction under the direction of the special education classroom teacher; assisted with assignments, projects, and daily routines; supervised students during structured non-instructional activities as assigned."
-      ]
+        "Delivered small-group and one-to-one support for students with disabilities under the education specialist’s direction, keeping students on IEP-aligned tasks and classroom routines.",
+        "Handled materials, transitions, and assigned supervision during structured non-instructional periods so instruction could stay focused."
+      ],
+      "story_bullets": []
     },
     {
       "employer": "Chino Unified School District",
       "school_site": "Riley Elementary",
       "location": "Chino, CA",
       "title": "Volunteer — Fifth-Grade Classroom & Special Education Support",
-      "start": "2013",
-      "end": "2016",
-      "date_note": "Dates appear in Kelly_Peterson_Resume_Portfolio.docx as 2013–2016; not listed on the 2020 resume file. [NEEDS CONFIRMATION: exact months/years]",
+      "start": "June 2013",
+      "end": "March 2016",
       "bullets": [
-        "Volunteered in a fifth-grade classroom; organized and led an entire grade-level Revolutionary War walk-through program (materials, stations, and rotations).",
-        "Conducted weekly fifth-grade reading assessments and supported reading assessments in the Special Education department to inform intervention planning and progress monitoring."
+        "Volunteered in a fifth-grade classroom during a career transition, reinforcing instruction and daily routines alongside the classroom teacher.",
+        "Planned and led a schoolwide fifth-grade Revolutionary War walk-through, coordinating stations, materials, and rotations for the full grade level.",
+        "Ran weekly fifth-grade reading assessments and supported Special Education department reading assessments so teams could adjust interventions and maintain clear records."
       ],
       "story_bullets": []
     },
@@ -140,27 +153,30 @@
       "start": "June 2008",
       "end": "June 2013",
       "bullets": [
-        "Taught junior high English with curriculum responsibilities and individualized academic planning for students with elevated learning needs; collaborated with the school psychologist on individualized programming (elementary and junior high).",
-        "Sponsored student participation in regional speech, spelling, and creative writing competitions through ACSI-related programs.",
-        "Reluctant reader growth (privacy-safe): supported a multi-year shift from reading avoidance to engagement; the student later chose high school novel-study electives and credited the earlier confidence foundation."
+        "Taught junior high English with schoolwide curriculum responsibilities and individualized academic plans for students with elevated learning needs.",
+        "Partnered with the school psychologist on individualized programming spanning elementary and junior high levels.",
+        "Sponsored regional speech, spelling, and creative writing participation through ACSI-related programs.",
+        "Reluctant reader outcome (privacy-safe): supported a multi-year shift from reading avoidance to engagement; the student later chose high school novel-study electives and credited the earlier confidence foundation."
       ],
       "story_bullets": [
-        "Reluctant reader growth (privacy-safe): supported a multi-year shift from reading avoidance to engagement; the student later chose high school novel-study electives and credited the earlier confidence foundation."
+        "Reluctant reader outcome (privacy-safe): supported a multi-year shift from reading avoidance to engagement; the student later chose high school novel-study electives and credited the earlier confidence foundation."
       ]
     },
     {
       "employer": "Chino Unified School District",
       "school_site": "Anna Borba Elementary",
       "location": "Chino, CA",
-      "title": "Elementary Classroom Teacher (grades 1–6); Master Teacher (fifth grade)",
+      "title": "Elementary Teacher (grades 1–6); Master Teacher (fifth grade)",
       "start": "August 1994",
       "end": "June 2008",
       "bullets": [
-        "Delivered daily instruction across multiple grade levels (including a 1/2 combination class) with long-term assignments in fifth and sixth grades; fifth-grade Master Teacher and Grade Level Coordinator; collaborated with the resource specialist on inclusion-type instruction; RTI team; Specialized Academic & Behavior Intervention Team (West End SELPA trained); Conflict Managers training (West End SELPA program); science fair coordination; School Site Council; district textbook adoption; PQR team training; collaborative DARE instruction with the Chino Police Department; IB Early Primary Years training and certification.",
-        "High-need student support (privacy-safe): supported two students labeled as behavior concerns through relationship-first check-ins, barrier reduction, and interest-based engagement; strengthened family partnership and long-horizon trajectories (no identifying details)."
+        "Taught multiple grade levels—including a 1/2 combination and extended assignments in fifth and sixth grades—while serving as fifth-grade Master Teacher and Grade Level Coordinator and partnering with the resource specialist on inclusion-style instruction.",
+        "Served on the RTI team and the Specialized Academic & Behavior Intervention Team (West End SELPA trained); supported schoolwide Conflict Managers training (West End SELPA program).",
+        "Coordinated schoolwide science fair programming; participated in School Site Council, district textbook adoption, PQR team training, and collaborative DARE instruction with the Chino Police Department; completed IB Early Primary Years training and certification.",
+        "Two-student outcome (privacy-safe): supported two students often labeled as behavior concerns through relationship-first check-ins, barrier reduction, and interest-based engagement; strengthened family partnership and long-horizon trajectories without sharing identifying details."
       ],
       "story_bullets": [
-        "High-need student support (privacy-safe): supported two students labeled as behavior concerns through relationship-first check-ins, barrier reduction, and interest-based engagement; strengthened family partnership and long-horizon trajectories (no identifying details)."
+        "Two-student outcome (privacy-safe): supported two students often labeled as behavior concerns through relationship-first check-ins, barrier reduction, and interest-based engagement; strengthened family partnership and long-horizon trajectories without sharing identifying details."
       ]
     },
     {
@@ -171,8 +187,10 @@
       "start": "October 1991",
       "end": "August 1994",
       "bullets": [
-        "Provided curriculum development and daily sixth-grade instruction, including academic intervention supports; coordinated schoolwide science fair programming and collaborative DARE instruction with the Chino Police Department."
-      ]
+        "Delivered daily sixth-grade instruction with curriculum development responsibilities and academic intervention supports.",
+        "Coordinated schoolwide science fair programming and collaborative DARE instruction with the Chino Police Department."
+      ],
+      "story_bullets": []
     }
   ],
   "leadership_committees": [],

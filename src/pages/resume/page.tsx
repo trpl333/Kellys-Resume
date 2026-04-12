@@ -29,7 +29,8 @@ export default function ResumePage() {
           {/* Download Button */}
           <div className="flex justify-end mb-12">
             <a
-              href="mailto:kellykaypeterson@gmail.com?subject=Resume Request"
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              download="Kelly_Peterson_resume.pdf"
               className="flex items-center gap-2 px-6 py-3 border border-[#1E3A5F] text-[#1E3A5F] rounded-full text-sm font-medium hover:bg-[#1E3A5F] hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer"
             >
               <i className="ri-download-line"></i>
@@ -45,7 +46,7 @@ export default function ResumePage() {
             <p className="text-sm text-gray-500 mb-1">Education Specialist (Special Education)</p>
             <p className="text-sm text-gray-500 mb-6">Mission Viejo, CA · kellykaypeterson@gmail.com</p>
             <p className="text-sm text-[#4A4A4A] leading-relaxed">
-              Education Specialist with 26+ years of TK–8 experience across public and private schools. Expertise in Inclusion, RSP, and SDC delivery models. Skilled in IEP development, MTSS frameworks, UDL instructional design, and CalTPA-aligned credential supervision. Currently serving as Education Specialist at OUSD and Field Supervisor at Chapman University.
+              Education Specialist with 26+ years of TK–8 experience across public and private schools. Expertise in Inclusion, RSP, and SDC delivery models. Skilled in IEP development, MTSS frameworks, UDL instructional design, and CalTPA-aligned credential supervision. Currently serving as Education Specialist at Orange Unified School District (Olive Elementary) and Field Supervisor at Chapman University.
             </p>
           </div>
 

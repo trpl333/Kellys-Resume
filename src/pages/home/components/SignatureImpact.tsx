@@ -1,13 +1,6 @@
-const bullets = [
-  "26+ years TK–8 teaching experience across public and private schools",
-  "OUSD Education Specialist (SDC + RSP/Inclusion) since August 2017 — present",
-  "Chapman University Field Supervisor (Aug 2020–Present): coaches and evaluates credential candidates, supports CalTPA aligned to the 13 TPEs, and provides program-level approval/non-approval readiness recommendations",
-  "Riley Elementary (CUSD) volunteer: led 5th grade Revolutionary War walk-through program, conducted weekly reading assessments for 5th grade, and supported SPED department reading assessments",
-  "Reluctant reader transformed over two years of confidence-rebuilding — student later chose novel-study electives and credited Kelly's approach",
-  "High-risk mentorship with two cousins: trust-centered support and basic-needs advocacy led to long-term positive outcomes years later",
-  "Expertise in IEP development, MTSS frameworks, and UDL instructional design across mild-to-moderate disability profiles",
-  "Credentialed in Ed Specialist (Mild/Moderate), Multiple Subject, CLAD, and IB PYP — a rare breadth of qualification",
-];
+import resume from "@data/kelly_resume_source.json";
+
+const bullets = resume.signature_impact as string[];
 
 export default function SignatureImpact() {
   return (

@@ -1,5 +1,10 @@
 /// <reference types="vite/client" />
 
+declare module "*.json" {
+  const value: Record<string, unknown>;
+  export default value;
+}
+
 declare const __BASE_PATH__: string;
 declare const __IS_PREVIEW__: boolean;
 declare const __READDY_PROJECT_ID__: string;

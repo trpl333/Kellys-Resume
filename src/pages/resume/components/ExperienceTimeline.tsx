@@ -1,79 +1,33 @@
-const experiences = [
-  {
-    dates: "Aug 2017 – Present",
-    title: "Education Specialist (SDC + RSP/Inclusion)",
-    org: "Oakland Unified School District — Olive Elementary",
-    bullets: [
-      "Deliver specialized academic instruction in both SDC and RSP/Inclusion settings for students with mild-to-moderate disabilities (TK–8)",
-      "Develop, implement, and monitor Individualized Education Programs (IEPs) in compliance with IDEA and California Education Code",
-      "Collaborate with general education teachers, related service providers, and families to design and execute MTSS and UDL-aligned supports",
-      "Lead IEP meetings, facilitate goal-setting, and maintain legally compliant documentation and progress monitoring",
-      "Provide behavioral support strategies and co-teaching models to promote inclusive classroom participation",
-    ],
-  },
-  {
-    dates: "Aug 2020 – Present",
-    title: "Field Supervisor — SPED & Multiple Subject",
-    org: "Chapman University (Caseload / As-Needed)",
-    bullets: [
-      "Observe and formally evaluate credential candidates in K–12 classroom placements across SPED and Multiple Subject programs",
-      "Conduct pre- and post-observation conferences aligned to the 13 California Teaching Performance Expectations (TPEs)",
-      "Support candidates through the CalTPA (California Teaching Performance Assessment) process with formative coaching",
-      "Provide program-level approval and non-approval readiness recommendations to the university",
-      "Serve as a bridge between university standards and real-world classroom practice",
-    ],
-  },
-  {
-    dates: "Mar 2016 – Jun 2017",
-    title: "SPED Instructional Aide",
-    org: "Saddleback Valley Unified School District",
-    bullets: [
-      "Supported students with disabilities in inclusive and pull-out settings under the direction of the Education Specialist",
-      "Implemented IEP goals and behavior support plans with fidelity",
-      "Assisted with data collection, progress monitoring, and classroom management",
-    ],
-  },
-  {
-    dates: "Jun 2013 – Mar 2016",
-    title: "Volunteer — Classroom & SPED Support",
-    org: "Riley Elementary, Capistrano Unified School District",
-    bullets: [
-      "Designed and led a 5th grade Revolutionary War walk-through experiential learning program",
-      "Conducted weekly reading assessments for 5th grade students",
-      "Supported SPED department with reading assessments and instructional materials",
-    ],
-  },
-  {
-    dates: "Jun 2008 – Jun 2013",
-    title: "Junior High English Teacher",
-    org: "Mission Hills Christian School",
-    bullets: [
-      "Taught English Language Arts to junior high students in a private school setting",
-      "Developed curriculum, managed classroom instruction, and supported diverse learners",
-      "Maintained strong family communication and student-centered classroom culture",
-    ],
-  },
-  {
-    dates: "Aug 1994 – Jun 2008",
-    title: "Elementary Teacher",
-    org: "Chino Unified School District — Anna Borba Elementary",
-    bullets: [
-      "Taught multiple grade levels across a 14-year tenure in a high-need public school district",
-      "Served as Master Teacher for 5th grade and Grade Level Coordinator",
-      "Participated in RTI committees, district curriculum adoption, School Site Council, and Science Fair coordination",
-      "Mentored student teachers and supported professional development initiatives",
-    ],
-  },
-  {
-    dates: "Oct 1991 – Aug 1994",
-    title: "6th Grade Teacher",
-    org: "Glenmeade Elementary",
-    bullets: [
-      "Delivered full-day instruction across core subjects for 6th grade students",
-      "Built foundational classroom management and differentiated instruction skills",
-    ],
-  },
-];
+import resume from "@data/kelly_resume_source.json";
+
+type Role = {
+  employer: string;
+  school_site?: string;
+  location?: string;
+  title: string;
+  start: string;
+  end: string;
+  employment_note?: string;
+  bullets: string[];
+};
+
+const roles = resume.experience as Role[];
+
+const experiences = roles.map((role) => {
+  let org = role.employer;
+  if (role.school_site) {
+    org = `${role.employer} — ${role.school_site}`;
+  }
+  if (role.employment_note) {
+    org += ` (${role.employment_note})`;
+  }
+  return {
+    dates: `${role.start} – ${role.end}`,
+    title: role.title,
+    org,
+    bullets: role.bullets,
+  };
+});
 
 export default function ExperienceTimeline() {
   return (

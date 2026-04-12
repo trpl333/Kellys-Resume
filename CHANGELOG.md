@@ -1,4 +1,14 @@
-# Changelog — Kelly Resume + Portfolio (initial build)
+# Changelog — Kellys-Resume
+
+## 2026-04-12 — Resume v3 (impact pass, repo as source of truth)
+
+- **`data/kelly_resume_source.json`**: eight punchy **Signature Impact** bullets (Chapman evaluator authority + CalTPA/13 TPEs + approval/non-approval; Orange USD SDC+RSP/Inclusion + MTSS/UDL; Mission Hills reluctant reader; Anna Borba two-student story; Riley volunteer leadership; plus two scope bullets). OUSD experience tightened to **six** outcome-oriented bullets. Riley dates set to **Jun 2013 – Mar 2016**; Chapman note **caseload-based**. Credentials aligned to confirmed renewal language.
+- **`resume/kelly_resume_v2.md`** and **`resume/kelly_resume_v3.md`**: markdown exports generated from JSON.
+- **`public/resume.pdf`**: copied from generator output for site download (`/resume.pdf` with Vite `BASE_URL`).
+- **`tools/generate_resume_outputs.py`**: writes markdown + PDF/DOCX under `outputs/` and publishes `public/resume.pdf` **inside this repo only** (no external app folder sync).
+- **Site**: `SignatureImpact`, `ExperienceTimeline`, and `EducationBlock` now read from `@data/kelly_resume_source.json`; resume page PDF download points at `resume.pdf`; Orange **Unified** (not Oakland) called out explicitly.
+
+---
 
 ## Sources used
 
@@ -20,19 +30,17 @@ Story content on the website and resume is therefore aligned to the **portfolio 
 - `outputs/resume_v1.docx` and `outputs/resume_v1.pdf`: ATS-oriented formatting (single-column paragraphs; no tables/columns/text boxes in the generator output).
 - `outputs/executive_snapshot.docx` and `outputs/executive_snapshot.pdf`: one-page snapshot aligned to the JSON.
 - `bullet_bank.md`: 20 swap-in bullets grouped by employer/role bucket.
-- `tools/generate_resume_outputs.py`: regenerates DOCX/PDF outputs and syncs `kelly-web/public/resume.pdf` + `kelly-web/data/kelly_resume_source.json` when `kelly-web/` exists.
-- `kelly-web/`: Next.js (App Router) + TypeScript + Tailwind portfolio with Home, Resume, Impact Stories, Testimonials template, and Contact pages.
-- `kelly-web/DEPLOYMENT.md`: Vercel-oriented deployment notes.
+- `tools/generate_resume_outputs.py`: regenerates DOCX/PDF under `outputs/` and publishes `public/resume.pdf` for this Vite site.
 
 ## Content decisions (grounded, not invented)
 
 - **Chapman authority language** is included explicitly (coaching + evaluation; CalTPA aligned to **13 TPEs**; **approval/non-approval** completion recommendation), matching the portfolio DOCX and the Chapman supervisor description file.
 - **Reluctant reader story** appears under **Mission Hills** experience, in **Signature Impact**, and as a STAR card on the website.
 - **Two-student / high-need partnership story** appears under **Chino USD (Anna Borba)** experience, in **Signature Impact**, and as a STAR card on the website (privacy-safe wording only).
-- **Riley Elementary volunteer** role is included as written in the portfolio DOCX; exact calendar months are flagged **[NEEDS CONFIRMATION]** because they were not present on the 2020 resume file.
+- **Riley Elementary volunteer** dates are recorded as **Jun 2013 – Mar 2016** per confirmed placement timeline for this package.
 - **Email** is flagged **[NEEDS CONFIRMATION]** throughout until you provide a confirmed address.
 
 ## QA checks performed
 
-- Next.js `npm run build` succeeds for `kelly-web/`.
-- Website STAR “compact” fields are **under 160 words** each (word counts: 89 and 90 across Situation/Task/Action/Result).
+- Run `python tools/generate_resume_outputs.py` after JSON edits to refresh `outputs/*`, `public/resume.pdf`, and `resume/kelly_resume_v*.md`.
+- Vite: run `npm install` and `npm run build` in **Kellys-Resume** when validating the React site.
