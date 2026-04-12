@@ -35,6 +35,7 @@ Family partnership · Paraprofessional leadership · Formal observation & writte
 ## Certifications & Credentials
 
 - Clear Education Specialist Credential (Mild/Moderate), California — June 2019
+- Autism Authorization — Education Specialist Instruction Credential, California — 2021
 - Clear Multiple Subject Teaching Credential, California — Renewed January 2021
 - Crosscultural, Language, and Academic Development (CLAD) Certification — November 2006
 - International Baccalaureate Primary Years Programme (IB PYP) Certification — March 2007
