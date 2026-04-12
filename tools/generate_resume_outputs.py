@@ -15,7 +15,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.shared import Inches, Pt
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
@@ -608,6 +608,18 @@ def _rl_styles_quick() -> dict[str, ParagraphStyle]:
         spaceBefore=QUICK_SECTION_HEADING_BEFORE_PT,
         spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
     )
+    # Certifications block only: centered over the two-column table (Quick PDF).
+    styles["h1_cert_quick"] = ParagraphStyle(
+        "h1_cert_quick",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        alignment=TA_CENTER,
+        spaceBefore=QUICK_SECTION_HEADING_BEFORE_PT,
+        spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
+    )
     styles["body"] = ParagraphStyle(
         "body_quick",
         parent=base["Normal"],
@@ -741,7 +753,7 @@ def _append_quick_certifications_two_column(
         else:
             right = Paragraph("", cell_st)
         rows.append([left, right])
-    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="LEFT")
+    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="CENTER")
     tbl.setStyle(_quick_two_column_table_style_certs())
     story.append(tbl)
 
@@ -865,7 +877,7 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
 
     story.append(Spacer(1, QUICK_CERT_SECTION_PRE_BREAK_PT))
-    story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
+    story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1_cert_quick"]))
     story.append(Spacer(1, 2))
     _append_quick_certifications_two_column(story, styles, data["certifications"])
 
