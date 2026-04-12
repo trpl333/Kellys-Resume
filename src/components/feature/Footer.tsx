@@ -35,9 +35,13 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#1E3A5F]">Connect</p>
               <Link to="/contact" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Contact</Link>
-              <a href="mailto:kellykaypeterson@gmail.com" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">
-                kellykaypeterson@gmail.com
-              </a>
+              <p className="text-sm text-gray-500 select-text">kellykaypeterson@gmail.com</p>
+              <Link
+                to="/contact#contact-form"
+                className="text-sm font-medium text-[#1E3A5F] hover:underline transition-colors cursor-pointer"
+              >
+                Send a message
+              </Link>
             </div>
           </div>
         </div>

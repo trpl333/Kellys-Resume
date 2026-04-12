@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import ExperienceTimeline from "./components/ExperienceTimeline";
@@ -87,13 +88,13 @@ export default function ResumePage() {
             <p className="text-sm text-gray-400 mb-6 font-['Inter']">
               Full resume and references available upon request.
             </p>
-            <a
-              href="mailto:kellykaypeterson@gmail.com?subject=Resume Request"
+            <Link
+              to="/contact#contact-form"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#1E3A5F] text-white rounded-full text-sm font-semibold hover:bg-[#162d4a] transition-all duration-200 whitespace-nowrap cursor-pointer"
             >
               <i className="ri-mail-line"></i>
-              Request Full Resume
-            </a>
+              Request full resume
+            </Link>
           </div>
         </div>
       </section>

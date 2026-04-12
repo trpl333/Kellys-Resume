@@ -6,29 +6,55 @@ const CONTACT_EMAIL = "kellykaypeterson@gmail.com";
 const PHONE_DISPLAY = "949-556-5378";
 const PHONE_TEL = "+19495565378";
 
+function contactApiUrl(): string {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL.slice(0, -1)
+    : import.meta.env.BASE_URL;
+  const path = "/api/contact";
+  if (!base) return path;
+  return `${base}${path}`;
+}
+
+type SubmitState = "idle" | "loading" | "success" | "error";
+
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const safeName = name.trim() || "(not provided)";
-    const safeEmail = email.trim() || "(not provided)";
-    const safeMessage = message.trim() || "(No message text provided.)";
-    const body = [
-      "Website contact form - Kelly Peterson",
-      "",
-      `Name: ${safeName}`,
-      `Reply-to email: ${safeEmail}`,
-      "",
-      "Message:",
-      "",
-      safeMessage,
-    ].join("\n");
-    const subject = encodeURIComponent("Website contact form - Kelly Peterson");
-    const mail = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
-    window.location.href = mail;
+    setErrorMessage("");
+    setSubmitState("loading");
+    try {
+      const res = await fetch(contactApiUrl(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          message: message.trim(),
+        }),
+      });
+      const data = (await res.json()) as { ok?: boolean; error?: string };
+      if (!res.ok || !data.ok) {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setSubmitState("error");
+        return;
+      }
+      setSubmitState("success");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch {
+      setErrorMessage("Network error. Check your connection or try again later.");
+      setSubmitState("error");
+    }
   }
 
   return (
@@ -57,27 +83,28 @@ export default function ContactPage() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
-            {/* Email */}
+            {/* Email — no mailto; form is the path */}
             <div className="order-2 flex flex-col rounded-2xl border border-[#E4E1DA] bg-white p-8 md:p-9 shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)] lg:order-1">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.08] text-[#1E3A5F]">
                 <i className="ri-mail-line text-xl" aria-hidden />
               </div>
               <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2">Email</h2>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-lg font-semibold text-[#2D2D2D] hover:text-[#1E3A5F] transition-colors break-all"
-              >
-                {CONTACT_EMAIL}
-              </a>
-              <p className="mt-4 text-sm text-gray-500 leading-relaxed">Best for detailed questions.</p>
+              <p className="text-lg font-semibold text-[#2D2D2D] break-all select-text">{CONTACT_EMAIL}</p>
+              <p className="mt-4 text-sm text-gray-500 leading-relaxed">
+                For new inquiries, use the{" "}
+                <a href="#contact-form" className="font-medium text-[#1E3A5F] hover:underline">
+                  contact form
+                </a>{" "}
+                so your message reaches me reliably.
+              </p>
             </div>
 
-            {/* Phone — primary path (first on mobile) */}
+            {/* Phone — tel only */}
             <div className="order-1 relative flex flex-col rounded-2xl border-2 border-[#1E3A5F]/22 bg-gradient-to-b from-[#FAF8F5] to-[#F0EBE4] p-8 md:p-9 shadow-[0_8px_32px_-14px_rgba(30,58,95,0.16)] ring-1 ring-[#1E3A5F]/[0.08] transition-shadow duration-300 hover:shadow-[0_10px_36px_-12px_rgba(30,58,95,0.2)] lg:order-2">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.12] text-[#1E3A5F]">
                 <i className="ri-phone-line text-xl" aria-hidden />
               </div>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2">Call or Text Kelly Directly</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2">Call Kelly</h2>
               <a href={`tel:${PHONE_TEL}`} className="text-lg font-semibold text-[#2D2D2D] hover:text-[#1E3A5F] transition-colors">
                 {PHONE_DISPLAY}
               </a>
@@ -89,9 +116,9 @@ export default function ContactPage() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.08] text-[#1E3A5F]">
                 <i className="ri-chat-3-line text-xl" aria-hidden />
               </div>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-3">Quick Message</h2>
-              <p className="mb-5 text-sm text-[#5c574e] leading-snug font-['Inter']">Prefer to send a quick note?</p>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4 flex-1">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-3">Send a message</h2>
+              <p className="mb-5 text-sm text-[#5c574e] leading-snug font-['Inter']">Include your phone number so I can follow up if needed.</p>
+              <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col gap-4 flex-1">
                 <div>
                   <label htmlFor="contact-name" className="sr-only">
                     Name
@@ -103,6 +130,7 @@ export default function ContactPage() {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
                     autoComplete="name"
+                    required
                     className="w-full rounded-xl border border-[#E0DED8] bg-[#FAFAF8]/80 px-4 py-3 text-sm text-[#2D2D2D] placeholder:text-gray-400 outline-none transition-shadow focus:border-[#1E3A5F]/40 focus:ring-2 focus:ring-[#1E3A5F]/15"
                   />
                 </div>
@@ -117,6 +145,22 @@ export default function ContactPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email for my reply"
                     autoComplete="email"
+                    required
+                    className="w-full rounded-xl border border-[#E0DED8] bg-[#FAFAF8]/80 px-4 py-3 text-sm text-[#2D2D2D] placeholder:text-gray-400 outline-none transition-shadow focus:border-[#1E3A5F]/40 focus:ring-2 focus:ring-[#1E3A5F]/15"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-phone" className="sr-only">
+                    Phone
+                  </label>
+                  <input
+                    id="contact-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Your phone number"
+                    autoComplete="tel"
+                    required
                     className="w-full rounded-xl border border-[#E0DED8] bg-[#FAFAF8]/80 px-4 py-3 text-sm text-[#2D2D2D] placeholder:text-gray-400 outline-none transition-shadow focus:border-[#1E3A5F]/40 focus:ring-2 focus:ring-[#1E3A5F]/15"
                   />
                 </div>
@@ -130,14 +174,26 @@ export default function ContactPage() {
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="What would you like me to know?"
                     rows={4}
+                    required
                     className="w-full min-h-[120px] resize-y rounded-xl border border-[#E0DED8] bg-[#FAFAF8]/80 px-4 py-3 text-sm text-[#2D2D2D] placeholder:text-gray-400 outline-none transition-shadow focus:border-[#1E3A5F]/40 focus:ring-2 focus:ring-[#1E3A5F]/15"
                   />
                 </div>
+                {submitState === "error" && errorMessage ? (
+                  <p className="text-sm text-red-700 bg-red-50 border border-red-100 rounded-xl px-4 py-3" role="alert">
+                    {errorMessage}
+                  </p>
+                ) : null}
+                {submitState === "success" ? (
+                  <p className="text-sm text-[#1E5a3a] bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-3">
+                    Thank you — your message was sent. I&apos;ll get back to you as soon as I can.
+                  </p>
+                ) : null}
                 <button
                   type="submit"
-                  className="mt-1 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#1E3A5F] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#162d4a] cursor-pointer"
+                  disabled={submitState === "loading"}
+                  className="mt-1 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#1E3A5F] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#162d4a] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message to Kelly
+                  {submitState === "loading" ? "Sending…" : "Send message"}
                 </button>
               </form>
             </div>
