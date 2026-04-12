@@ -25,12 +25,12 @@ const sortedStories = [...impactList].sort(
   (a, b) => storyOrder.indexOf(a.id) - storyOrder.indexOf(b.id),
 );
 
-/** One-line transformation hooks (compressed from each story’s result). */
+/** One-line transformation hooks — contrast first, privacy-safe. */
 const IMPACT_HOOKS: Record<string, string> = {
   "mission-hills-literacy":
-    "A student who wouldn't touch books—chose high-school novel electives and said this chapter was the turning point.",
+    "A student who refused to read… chose novels two years later—and said this stretch was the reason they'd try.",
   "chino-partnership":
-    "Two students written off as behavior concerns—families came back to school life, engagement held, both later called those years formative.",
+    "Two students the school had nearly written off… re-engaged—and brought their families back with them.",
 };
 
 function combineWhatKellyDid(task: string, action: string): string {
@@ -108,11 +108,11 @@ export default function ImpactStoriesPage() {
       {/* Conversion CTA */}
       <section className="bg-[#1E3A5F] py-16 md:py-20">
         <div className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-          <h2 className="font-['Crimson_Pro'] text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">
-            Want to bring this kind of impact to your school or program?
+          <h2 className="font-['Crimson_Pro'] text-2xl md:text-3xl font-bold text-white mb-5 leading-snug">
+            What happens in these stories can happen in your program.
           </h2>
-          <p className="text-sm md:text-base text-white/80 font-['Inter'] leading-relaxed mb-8">
-            If you’re hiring for special education leadership, field supervision, or partnership on inclusion and IEP quality, Kelly would welcome a conversation.
+          <p className="text-sm md:text-base text-white/85 font-['Inter'] leading-relaxed mb-9">
+            Kelly builds trust, structure, and momentum that lasts—for students and the adults supporting them.
           </p>
           <Link
             to="/contact"

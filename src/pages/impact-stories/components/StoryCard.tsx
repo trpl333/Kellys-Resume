@@ -41,21 +41,28 @@ export default function StoryCard({
       <div className="p-7 md:p-9 lg:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E3A5F]/90 mb-4">{tag}</p>
 
-        <h2 className="font-['Crimson_Pro'] text-2xl md:text-3xl lg:text-[2rem] font-bold text-[#2D2D2D] mb-4 leading-snug">
+        <h2 className="font-['Crimson_Pro'] text-2xl md:text-3xl lg:text-[2rem] font-bold text-[#2D2D2D] mb-7 leading-snug">
           {title}
         </h2>
 
-        <p className="text-[17px] md:text-lg font-semibold text-[#2D2D2D]/90 leading-snug font-['Inter'] mb-6 max-w-2xl">
-          {hook}
-        </p>
-
-        {/* Outcome — single place for full result */}
-        <div className="mb-9 rounded-2xl border border-[#1E3A5F]/22 bg-gradient-to-br from-[#1E3A5F]/[0.11] to-[#F5F0E8]/90 px-5 py-5 md:px-6 md:py-[1.35rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2.5">Outcome</p>
-          <p className="text-base md:text-[17px] text-[#252525] leading-relaxed font-['Inter'] font-medium">{result}</p>
+        <div className="mb-9">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#1E3A5F]/70 mb-2.5 font-['Inter']">
+            Impact in one line
+          </p>
+          <div className="border-l-[3px] border-[#1E3A5F]/45 pl-4 md:pl-5 py-0.5">
+            <p className="text-[17px] md:text-lg font-semibold text-[#1E3A5F] leading-snug font-['Inter'] tracking-tight">
+              {hook}
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-5">
+        {/* Outcome — impact leads */}
+        <div className="mb-11 rounded-2xl border border-[#1E3A5F]/28 bg-gradient-to-br from-[#1E3A5F]/[0.14] to-[#EDE8DF] px-5 py-5 md:px-6 md:py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_1px_0_rgba(30,58,95,0.06)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2.5">Outcome</p>
+          <p className="text-base md:text-[17px] text-[#1a1a1a] leading-relaxed font-['Inter'] font-semibold">{result}</p>
+        </div>
+
+        <div className="flex flex-col gap-5 mt-1">
           <Section label="What was happening">{situation}</Section>
           <Section label="What Kelly did">{whatKellyDid}</Section>
         </div>
