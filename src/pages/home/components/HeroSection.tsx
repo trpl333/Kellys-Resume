@@ -6,6 +6,7 @@ const BG_IMAGES = [
   `${import.meta.env.BASE_URL}kelly-bg-2.png`,
   `${import.meta.env.BASE_URL}kelly-bg-3.png`,
   `${import.meta.env.BASE_URL}kelly-bg-4.png`,
+  `${import.meta.env.BASE_URL}kelly-bg-5.png`,
 ] as const;
 
 /** Time each slide stays fully (or mostly) visible before crossfading to the next. */
