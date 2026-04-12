@@ -42,11 +42,12 @@ BULLET_SPACE_AFTER_PT = 3
 # Full Professional History PDF (ReportLab) — spacing / rhythm aligned with Quick polish.
 FULL_PAGE_MARGIN_INCH = 0.75
 FULL_SUMMARY_SECTION_PRE_BREAK_PT = int(round(BODY_FONT_PT * BODY_LINE_SPACING * 1.25))
-FULL_INTER_SECTION_SPACER_PT = 7
+FULL_INTER_SECTION_SPACER_PT = 8
 FULL_CERT_SECTION_PRE_BREAK_PT = 12
 FULL_EXPERIENCE_PRE_BREAK_PT = 8
-FULL_EDU_SECTION_PRE_BREAK_PT = 14
+FULL_EDU_SECTION_PRE_BREAK_PT = 11
 FULL_ROLE_SPACE_BEFORE_PT = 6
+FULL_POST_EDUCATION_SPACER_PT = 5
 
 # Quick Resume (2-page) PDF only: slightly tighter vertical rhythm.
 QUICK_BODY_LINE_SPACING = 1.06
@@ -550,7 +551,20 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
         leading=float(SECTION_HEADING_PT) + 1,
         textColor=colors.HexColor("#111111"),
         spaceBefore=8,
-        spaceAfter=PARA_SPACE_AFTER_PT,
+        spaceAfter=4,
+        keepWithNext=1,
+    )
+    # First heading on page 1: pre-header Spacer supplies air; avoid stacking spaceBefore on top of it.
+    styles["h1_summary_full"] = ParagraphStyle(
+        "h1_summary_full",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        spaceBefore=0,
+        spaceAfter=3,
+        keepWithNext=1,
     )
     styles["body"] = ParagraphStyle(
         "body",
@@ -611,7 +625,8 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
         textColor=colors.HexColor("#111111"),
         alignment=TA_CENTER,
         spaceBefore=6,
-        spaceAfter=3,
+        spaceAfter=5,
+        keepWithNext=1,
     )
     # Education heading: left-aligned, extra air below heading (Quick-style polish).
     styles["h1_edu_full"] = ParagraphStyle(
@@ -624,6 +639,7 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
         alignment=TA_LEFT,
         spaceBefore=6,
         spaceAfter=6,
+        keepWithNext=1,
     )
     # Two-column table cells (Full PDF): mirror Quick table rhythm with full body leading.
     styles["full_table_cell"] = ParagraphStyle(
@@ -919,7 +935,7 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
     )
 
     story.append(Spacer(1, FULL_SUMMARY_SECTION_PRE_BREAK_PT))
-    story.append(Paragraph(_escape("SUMMARY"), styles["h1"]))
+    story.append(Paragraph(_escape("SUMMARY"), styles["h1_summary_full"]))
     for line in data["summary"]:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
 
@@ -935,7 +951,6 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
 
     story.append(Spacer(1, FULL_CERT_SECTION_PRE_BREAK_PT))
     story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1_cert_full"]))
-    story.append(Spacer(1, 2))
     _append_reportlab_certifications_two_column(
         story,
         styles["full_cert_table_cell"],
@@ -946,7 +961,6 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
 
     story.append(Spacer(1, FULL_EXPERIENCE_PRE_BREAK_PT))
     story.append(Paragraph(_escape("PROFESSIONAL EXPERIENCE"), styles["h1"]))
-    story.append(Spacer(1, 4))
     for idx, role in enumerate(data["experience"]):
         if idx > 0:
             story.append(Spacer(1, FULL_ROLE_SPACE_BEFORE_PT))
@@ -970,6 +984,7 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
         usable_width_pt=_full_pdf_usable_width_pt(),
         table_h_align="LEFT",
     )
+    story.append(Spacer(1, FULL_POST_EDUCATION_SPACER_PT))
 
     leadership = data.get("leadership_committees") or []
     if leadership:
