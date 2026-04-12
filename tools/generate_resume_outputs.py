@@ -50,6 +50,10 @@ QUICK_PAGE_MARGIN_INCH = 0.72
 QUICK_TABLE_COL_GUTTER_PT = 14
 # Extra air before Certifications block (Quick PDF): ~1.35× body line (~11pt).
 QUICK_CERT_SECTION_PRE_BREAK_PT = 15
+# Same pre-break before Education (separates from Professional Experience).
+QUICK_EDU_SECTION_PRE_BREAK_PT = 15
+# Extra space below Education heading only (Quick PDF; Option A vs default h1).
+QUICK_EDU_HEADING_SPACE_AFTER_PT = 6
 # Vertical gap between certification rows (distinct entries; points).
 QUICK_CERT_ROW_GAP_PT = 8
 # Certifications column divider (Quick PDF only).
@@ -620,6 +624,18 @@ def _rl_styles_quick() -> dict[str, ParagraphStyle]:
         spaceBefore=QUICK_SECTION_HEADING_BEFORE_PT,
         spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
     )
+    # Education block only: left-aligned; more air below heading than default h1 (Option A).
+    styles["h1_edu_quick"] = ParagraphStyle(
+        "h1_edu_quick",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        alignment=TA_LEFT,
+        spaceBefore=QUICK_SECTION_HEADING_BEFORE_PT,
+        spaceAfter=QUICK_EDU_HEADING_SPACE_AFTER_PT,
+    )
     styles["body"] = ParagraphStyle(
         "body_quick",
         parent=base["Normal"],
@@ -900,8 +916,8 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
         for b in _quick_selected_bullets(role):
             story.append(_rl_bullet_paragraph(b, styles["bullet"]))
 
-    story.append(Paragraph(_escape("EDUCATION"), styles["h1"]))
-    story.append(Spacer(1, 2))
+    story.append(Spacer(1, QUICK_EDU_SECTION_PRE_BREAK_PT))
+    story.append(Paragraph(_escape("EDUCATION"), styles["h1_edu_quick"]))
     _append_quick_education_two_column(story, styles, data["education"])
 
     story.append(Spacer(1, 0.02 * inch))
