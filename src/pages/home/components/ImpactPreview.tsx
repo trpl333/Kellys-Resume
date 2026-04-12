@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 
 const stories = [
   {
-    tag: "Literacy & Confidence",
-    title: "Reluctant Reader to Confident Learner",
+    tag: "Literacy & confidence",
+    title: "Reluctant reader to engaged learner",
     summary:
-      "A student arrived with deep reluctance around reading — avoidance behaviors, low stamina, and visible anxiety around text. Over two years, Kelly built a structured, low-pressure reading environment grounded in student interest and incremental success. By the end of the second year, the student's confidence had measurably shifted. Years later, that same student chose novel-study electives — and credited Kelly's approach as the turning point.",
+      "Two years of low-pressure, interest-led work—avoidance eased into steady reading. Later chose high-school novel electives and named this stretch the turning point.",
     link: "/impact-stories",
   },
   {
-    tag: "Mentorship & Trust",
-    title: "Trust Built with High-Needs Learners",
+    tag: "Trust & partnership",
+    title: "Students and families re-engaged",
     summary:
-      "Two cousins, both high-risk, arrived with significant barriers to engagement — academic, social, and basic-needs related. Kelly built trust through consistent presence, honest communication, and practical support that extended beyond the classroom. The mentorship relationship created stability that neither student had experienced before. Years later, both cousins showed long-term positive outcomes — a testament to what sustained, relationship-first support can accomplish.",
+      "Two high-needs students: daily check-ins, clear expectations, and honest follow-through. Families came back to school events; both later described the steady support as formative.",
     link: "/impact-stories",
   },
 ];
@@ -21,48 +21,50 @@ export default function ImpactPreview() {
   return (
     <section className="bg-[#FAFAF8] py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-14">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1E3A5F] mb-4">
-              Student Outcomes
+              Student outcomes
             </p>
             <h2 className="font-['Crimson_Pro'] text-4xl md:text-5xl font-bold text-[#2D2D2D]">
               Impact Stories
             </h2>
-            <p className="text-sm text-gray-400 mt-3 font-['Inter']">
-              Privacy-safe summaries. Details shared with respect for student privacy.
+            <p className="text-sm text-gray-500 mt-3 font-['Inter'] max-w-md">
+              Privacy-safe snapshots—no names or labels. Read the full narratives on Impact Stories.
             </p>
           </div>
           <Link
             to="/impact-stories"
-            className="text-sm font-medium text-[#1E3A5F] hover:underline whitespace-nowrap cursor-pointer"
+            className="text-sm font-semibold text-[#1E3A5F] hover:text-[#162d4a] transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-1"
           >
-            View all stories →
+            View all stories
+            <span aria-hidden className="text-[#1E3A5F]/70">→</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {stories.map((story, i) => (
-            <div
+            <article
               key={i}
-              className="bg-[#EEEDE9] rounded-2xl p-8 md:p-10 flex flex-col hover:scale-[1.01] transition-transform duration-300 cursor-default"
+              className="relative flex flex-col rounded-2xl border border-[#E8E0D0]/90 bg-white p-7 md:p-8 shadow-[0_2px_16px_-4px_rgba(30,58,95,0.08)] transition-all duration-300 hover:border-[#1E3A5F]/20 hover:shadow-[0_12px_32px_-12px_rgba(30,58,95,0.14)]"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#1E3A5F] mb-4">
+              <span className="inline-flex w-fit rounded-full bg-[#1E3A5F]/[0.06] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#1E3A5F] mb-4">
                 {story.tag}
-              </p>
-              <h3 className="font-['Crimson_Pro'] text-2xl font-bold text-[#2D2D2D] mb-5">
+              </span>
+              <h3 className="font-['Crimson_Pro'] text-xl md:text-2xl font-bold text-[#2D2D2D] mb-3 leading-snug">
                 {story.title}
               </h3>
-              <p className="text-sm text-[#4A4A4A] leading-relaxed font-['Inter'] flex-1">
+              <p className="text-sm text-[#555] leading-relaxed font-['Inter'] flex-1 line-clamp-4 md:line-clamp-5">
                 {story.summary}
               </p>
               <Link
                 to={story.link}
-                className="mt-8 text-sm font-medium text-[#1E3A5F] hover:underline cursor-pointer"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E3A5F] hover:text-[#162d4a] transition-colors cursor-pointer"
               >
-                Read full story →
+                Read full story
+                <span aria-hidden>→</span>
               </Link>
-            </div>
+            </article>
           ))}
         </div>
       </div>

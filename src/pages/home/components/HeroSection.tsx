@@ -51,9 +51,13 @@ export default function HeroSection() {
             />
           </div>
         ))}
-        {/* Readability: soft dark wash + existing brand gradient */}
+        {/* Stronger left wash for headline + CTAs over bright photography */}
         <div
-          className="absolute inset-0 z-[2] bg-black/25 bg-gradient-to-r from-[#1E3A5F]/80 via-[#1E3A5F]/55 to-[#1E3A5F]/25 pointer-events-none"
+          className="absolute inset-0 z-[2] bg-gradient-to-r from-black/50 via-black/25 to-transparent pointer-events-none"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 z-[2] bg-gradient-to-r from-[#1E3A5F]/88 via-[#1E3A5F]/62 to-[#1E3A5F]/28 pointer-events-none"
           aria-hidden
         />
       </div>
@@ -61,32 +65,36 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-20">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 mb-6 drop-shadow-sm">
             Education Specialist · Special Education
           </p>
-          <h1 className="font-['Crimson_Pro'] text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+          <h1 className="font-['Crimson_Pro'] text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-md">
             Kelly Peterson
           </h1>
-          <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-4 font-['Inter']">
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-4 font-['Inter'] drop-shadow-sm">
             Education Specialist (Special Education)
           </p>
-          <p className="text-base md:text-lg text-white/75 leading-relaxed mb-10 max-w-xl font-['Inter'] font-light">
+          <p className="text-base md:text-lg text-white/85 leading-relaxed mb-10 max-w-xl font-['Inter'] font-light drop-shadow-sm">
             26+ years TK–8. Inclusion · RSP · SDC. IEP-aligned instruction, MTSS/UDL supports, and trust-centered mentorship that changes outcomes.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href={`${import.meta.env.BASE_URL}resume.pdf`}
-              download="Kelly_Peterson_resume.pdf"
-              className="px-8 py-4 bg-white text-[#1E3A5F] rounded-full text-sm font-semibold hover:bg-white/90 transition-all duration-200 text-center whitespace-nowrap cursor-pointer"
-            >
-              Download Resume
-            </a>
-            <Link
-              to="/impact-stories"
-              className="px-8 py-4 border-2 border-white text-white rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-200 text-center whitespace-nowrap cursor-pointer"
-            >
-              View Impact Stories
-            </Link>
+
+          {/* CTA row: frosted panel for contrast on variable slides */}
+          <div className="max-w-xl rounded-2xl border border-white/20 bg-white/[0.12] backdrop-blur-md shadow-[0_12px_40px_-12px_rgba(0,0,0,0.45)] p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a
+                href={`${import.meta.env.BASE_URL}resume.pdf`}
+                download="Kelly_Peterson_resume.pdf"
+                className="inline-flex justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-sm"
+              >
+                Download Resume
+              </a>
+              <Link
+                to="/impact-stories"
+                className="inline-flex justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-[#1E3A5F] text-white border-2 border-white/90 ring-2 ring-white/20 hover:bg-[#162d4a] hover:border-white transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-md"
+              >
+                View Impact Stories
+              </Link>
+            </div>
           </div>
         </div>
       </div>
