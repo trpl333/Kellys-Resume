@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { resumePdfHref } from "@/lib/resumePdfHref";
+import { resumeFullPdfHref, resumeQuickPdfHref } from "@/lib/resumePdfHref";
 
 type NavLinkItem =
   | { label: string; path: string }
@@ -80,17 +80,28 @@ export default function Navbar() {
         </nav>
 
         {/* CTA Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2 flex-wrap justify-end max-w-xl">
           <a
-            href={resumePdfHref()}
-            download="Kelly_Peterson_resume.pdf"
-            className={`inline-flex min-h-10 items-center justify-center px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 whitespace-nowrap cursor-pointer ${
+            href={resumeQuickPdfHref()}
+            download="Kelly_Peterson_Quick_Resume.pdf"
+            className={`inline-flex min-h-10 items-center justify-center px-3 py-2 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer ${
               scrolled || !isHome
-                ? "border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white"
-                : "border-white text-white hover:bg-white hover:text-[#1E3A5F]"
+                ? "border-[#1E3A5F] bg-[#1E3A5F] text-white hover:bg-[#162d4a]"
+                : "border-white bg-white text-[#1E3A5F] hover:bg-white/95"
             }`}
           >
-            Download Resume
+            Quick Resume (2 Pages)
+          </a>
+          <a
+            href={resumeFullPdfHref()}
+            download="Kelly_Peterson_Full_Professional_History.pdf"
+            className={`inline-flex min-h-10 items-center justify-center px-3 py-2 rounded-full text-xs font-medium border transition-all duration-200 cursor-pointer ${
+              scrolled || !isHome
+                ? "border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white"
+                : "border-white/80 text-white hover:bg-white/10"
+            }`}
+          >
+            Full Professional History
           </a>
           <Link
             to="/contact"
@@ -130,11 +141,18 @@ export default function Navbar() {
           ))}
           <div className="flex flex-col gap-3 pt-4 border-t border-gray-100">
             <a
-              href={resumePdfHref()}
-              download="Kelly_Peterson_resume.pdf"
-              className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium border border-[#1E3A5F] text-[#1E3A5F] text-center whitespace-nowrap cursor-pointer"
+              href={resumeQuickPdfHref()}
+              download="Kelly_Peterson_Quick_Resume.pdf"
+              className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-semibold bg-[#1E3A5F] text-white text-center cursor-pointer"
             >
-              Download Resume
+              Quick Resume (2 Pages)
+            </a>
+            <a
+              href={resumeFullPdfHref()}
+              download="Kelly_Peterson_Full_Professional_History.pdf"
+              className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium border border-[#1E3A5F] text-[#1E3A5F] text-center cursor-pointer"
+            >
+              Full Professional History
             </a>
             <Link
               to="/contact"

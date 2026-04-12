@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { resumePdfHref } from "@/lib/resumePdfHref";
+import { resumeFullPdfHref, resumeQuickPdfHref } from "@/lib/resumePdfHref";
 
 const BG_IMAGES = [
   `${import.meta.env.BASE_URL}kelly-bg-1.png`,
@@ -83,17 +83,26 @@ export default function HeroSection() {
 
           {/* CTA row: frosted panel for contrast on variable slides */}
           <div className="max-w-xl rounded-2xl border border-white/20 bg-white/[0.12] backdrop-blur-md shadow-[0_12px_40px_-12px_rgba(0,0,0,0.45)] p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <a
-                href={resumePdfHref()}
-                download="Kelly_Peterson_resume.pdf"
-                className="inline-flex min-h-11 justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-sm"
-              >
-                Download Resume
-              </a>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-3">
+                <a
+                  href={resumeQuickPdfHref()}
+                  download="Kelly_Peterson_Quick_Resume.pdf"
+                  className="inline-flex min-h-11 justify-center items-center px-6 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center cursor-pointer shadow-sm"
+                >
+                  Quick Resume (2 Pages)
+                </a>
+                <a
+                  href={resumeFullPdfHref()}
+                  download="Kelly_Peterson_Full_Professional_History.pdf"
+                  className="inline-flex min-h-11 justify-center items-center px-6 py-3.5 rounded-full text-sm font-semibold border-2 border-white/90 text-white hover:bg-white/10 transition-all duration-200 text-center cursor-pointer"
+                >
+                  Full Professional History
+                </a>
+              </div>
               <Link
                 to="/impact-stories"
-                className="inline-flex min-h-11 justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-[#1E3A5F] text-white border-2 border-white/90 ring-2 ring-white/20 hover:bg-[#162d4a] hover:border-white transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-md"
+                className="inline-flex min-h-10 justify-center items-center px-6 py-2.5 rounded-full text-sm font-medium text-white/90 border border-white/35 hover:bg-white/10 transition-all duration-200 text-center cursor-pointer"
               >
                 View Impact Stories
               </Link>

@@ -28,17 +28,24 @@ OUT_DIR = ROOT / "outputs"
 RESUME_DIR = ROOT / "resume"
 PUBLIC_DIR = ROOT / "public"
 
-# Resume PDF + resume_v1 DOCX: fewer signature bullets for executive whitespace (JSON keeps full list for web).
-# Five strongest signature bullets on resume_v1 PDF/DOCX (JSON keeps full list for markdown/web).
+# Full + DOCX PDFs: fewer signature bullets for whitespace (JSON keeps full list for web/markdown).
 RESUME_SIGNATURE_RENDER_LIMIT = 5
 
 BODY_FONT_PT = 10.5
 SECTION_HEADING_PT = 11
-# Tight layout to keep resume_v1 on two pages (PDF + DOCX).
+# Full Professional History PDF/DOCX layout (target 2-3 pages).
 BODY_LINE_SPACING = 1.10
 PARA_SPACE_AFTER_PT = 3
 ROLE_SPACE_BEFORE_PT = 5
 BULLET_SPACE_AFTER_PT = 3
+
+# Quick Resume (2-page) PDF only: slightly tighter vertical rhythm.
+QUICK_BODY_LINE_SPACING = 1.06
+QUICK_PARA_SPACE_AFTER_PT = 2
+QUICK_BULLET_SPACE_AFTER_PT = 2
+QUICK_ROLE_SPACE_BEFORE_PT = 4
+QUICK_SECTION_HEADING_BEFORE_PT = 6
+QUICK_PAGE_MARGIN_INCH = 0.72
 
 
 def _core_competency_lines(items: list[str], *, max_lines: int = 2) -> list[str]:
@@ -51,6 +58,41 @@ def _core_competency_lines(items: list[str], *, max_lines: int = 2) -> list[str]
     sep = " · "
     lines = [sep.join(items[:mid]), sep.join(items[mid:])]
     return lines[:max_lines]
+
+
+def _quick_selected_bullets(role: dict[str, Any]) -> list[str]:
+    """
+    Editorial picks for the 2-page Quick Resume (older roles compressed).
+    Orange USD + Chapman: full bullets. Others: capped per product spec.
+    """
+    bs = list(role.get("bullets") or [])
+    emp = role.get("employer") or ""
+    site = role.get("school_site") or ""
+    if emp == "Orange Unified School District":
+        return bs
+    if emp == "Chapman University":
+        return bs
+    if emp == "Saddleback Valley Unified School District":
+        if len(bs) > 3:
+            return [bs[0], bs[3]]
+        return bs[: min(2, len(bs))]
+    if emp == "Capistrano Unified School District" and "Riley" in site:
+        if len(bs) >= 3:
+            return [bs[1], bs[2]]
+        return bs[: min(2, len(bs))]
+    if emp == "Mission Hills Christian School":
+        if len(bs) > 4:
+            return [bs[0], bs[4]]
+        return bs[: min(2, len(bs))]
+    if emp == "Chino Unified School District" and "Anna Borba" in site:
+        if len(bs) > 10:
+            return [bs[1], bs[10]]
+        if len(bs) > 2:
+            return [bs[1], bs[-1]]
+        return bs[: min(2, len(bs))]
+    if emp == "Chino Unified School District" and "Glenmeade" in site:
+        return [bs[0]] if bs else []
+    return bs
 
 
 def _strip_markup_tags(text: str) -> str:
@@ -279,7 +321,7 @@ def _rl_education_degree_block_markup(edu: dict[str, Any]) -> str:
     return f"<b>{deg}</b><br/>{loc}<br/>{dt}"
 
 
-def build_resume_v1_docx(data: dict[str, Any], path: Path) -> None:
+def build_resume_full_docx(data: dict[str, Any], path: Path) -> None:
     document = Document()
     set_doc_defaults(document)
     section = document.sections[0]
@@ -421,7 +463,7 @@ def build_executive_snapshot_docx(data: dict[str, Any], path: Path) -> None:
 
 
 def _rl_styles() -> dict[str, ParagraphStyle]:
-    """ReportLab paragraph styles aligned to resume_v1 DOCX (10.5pt body, tight two-page layout)."""
+    """ReportLab paragraph styles aligned to full resume DOCX (10.5pt body)."""
     base = getSampleStyleSheet()
     styles: dict[str, ParagraphStyle] = {}
     fs = float(BODY_FONT_PT)
@@ -498,11 +540,89 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
     return styles
 
 
+def _rl_styles_quick() -> dict[str, ParagraphStyle]:
+    """Tighter vertical rhythm for the 2-page Quick Resume PDF only."""
+    base = getSampleStyleSheet()
+    styles: dict[str, ParagraphStyle] = {}
+    fs = float(BODY_FONT_PT)
+    leading = round(fs * QUICK_BODY_LINE_SPACING, 2)
+
+    styles["name"] = ParagraphStyle(
+        "name_quick",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=14,
+        leading=16,
+        alignment=TA_LEFT,
+        textColor=colors.HexColor("#111111"),
+        spaceAfter=3,
+    )
+    styles["contact"] = ParagraphStyle(
+        "contact_quick",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading,
+        alignment=TA_LEFT,
+        spaceAfter=3,
+    )
+    styles["h1"] = ParagraphStyle(
+        "h1_quick",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        spaceBefore=QUICK_SECTION_HEADING_BEFORE_PT,
+        spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
+    )
+    styles["body"] = ParagraphStyle(
+        "body_quick",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading,
+        alignment=TA_LEFT,
+        spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
+    )
+    styles["role_header"] = ParagraphStyle(
+        "role_header_quick",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=fs,
+        leading=leading,
+        alignment=TA_LEFT,
+        spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
+    )
+    styles["edu_block"] = ParagraphStyle(
+        "edu_block_quick",
+        parent=styles["body"],
+        spaceAfter=3,
+    )
+    styles["edu_date_last"] = ParagraphStyle(
+        "edu_date_last_quick",
+        parent=styles["body"],
+        spaceAfter=QUICK_PARA_SPACE_AFTER_PT,
+    )
+    styles["bullet"] = ParagraphStyle(
+        "bullet_quick",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading,
+        leftIndent=16,
+        bulletIndent=6,
+        alignment=TA_LEFT,
+        spaceAfter=QUICK_BULLET_SPACE_AFTER_PT,
+    )
+    return styles
+
+
 def _rl_bullet_paragraph(text: str, style: ParagraphStyle) -> Paragraph:
     return Paragraph(_text_for_output(text), style, bulletText="\u2022")
 
 
-def build_resume_v1_pdf(data: dict[str, Any], path: Path) -> None:
+def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
     styles = _rl_styles()
     story: list[Any] = []
     c = data["contact"]
@@ -574,6 +694,72 @@ def build_resume_v1_pdf(data: dict[str, Any], path: Path) -> None:
     doc.build(story)
 
 
+def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
+    """
+    Two-page Quick Resume: summary, certifications (dual Clear), signature impact,
+    full Orange + Chapman roles, compressed older roles, education. No core competencies.
+    """
+    styles = _rl_styles_quick()
+    story: list[Any] = []
+    c = data["contact"]
+    name = data["meta"]["candidate_name"]
+
+    story.append(Paragraph(_text_for_output(name.upper()), styles["name"]))
+    story.append(
+        Paragraph(
+            _text_for_output(f"{c['city_state_zip']} | {c['phone']} | {c['email']}"),
+            styles["contact"],
+        )
+    )
+
+    story.append(Paragraph(_escape("SUMMARY"), styles["h1"]))
+    for line in data["summary"]:
+        story.append(Paragraph(_text_for_output(line), styles["body"]))
+
+    story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
+    for item in data["certifications"]:
+        story.append(_rl_bullet_paragraph(f"{item['name']} — {item['date']}", styles["bullet"]))
+
+    story.append(Paragraph(_escape("SIGNATURE IMPACT"), styles["h1"]))
+    for b in data["signature_impact"][:RESUME_SIGNATURE_RENDER_LIMIT]:
+        story.append(_rl_bullet_paragraph(b, styles["bullet"]))
+
+    story.append(Paragraph(_escape("PROFESSIONAL EXPERIENCE"), styles["h1"]))
+    for idx, role in enumerate(data["experience"]):
+        if idx > 0:
+            story.append(Spacer(1, QUICK_ROLE_SPACE_BEFORE_PT))
+        header = _strip_markup_tags(
+            f"{role['title']} | {role['employer']}"
+            + (f", {role['school_site']}" if role.get("school_site") else "")
+            + f" | {role['location']} | {role['start']} – {role['end']}"
+            + (f" ({role['employment_note']})" if role.get("employment_note") else "")
+            + (f" [{role['date_note']}]" if role.get("date_note") else "")
+        )
+        story.append(Paragraph(_text_for_output(header), styles["role_header"]))
+        for b in _quick_selected_bullets(role):
+            story.append(_rl_bullet_paragraph(b, styles["bullet"]))
+
+    story.append(Paragraph(_escape("EDUCATION"), styles["h1"]))
+    edu_rows = data["education"]
+    for i, edu in enumerate(edu_rows):
+        blk = _rl_education_degree_block_markup(edu)
+        estyle = styles["edu_block"] if i < len(edu_rows) - 1 else styles["edu_date_last"]
+        story.append(Paragraph(blk, estyle))
+
+    story.append(Spacer(1, 0.02 * inch))
+
+    m = QUICK_PAGE_MARGIN_INCH * inch
+    doc = SimpleDocTemplate(
+        str(path),
+        pagesize=LETTER,
+        leftMargin=m,
+        rightMargin=m,
+        topMargin=m,
+        bottomMargin=m,
+    )
+    doc.build(story)
+
+
 def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
     styles = _rl_styles()
     story: list[Any] = []
@@ -640,8 +826,15 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
     doc.build(story)
 
 
-def _validate_resume_pdf(path: Path) -> None:
-    """Fail fast if the public resume is not two pages or extracted text shows literal bold tags."""
+def _assert_pdf_no_literal_bold_markup(path: Path, reader: Any) -> None:
+    extracted = "".join((page.extract_text() or "") for page in reader.pages)
+    bad_tags = ("<b>", "</b>", "<B>", "</B>", "&lt;b&gt;", "&lt;/b&gt;")
+    if any(t in extracted for t in bad_tags):
+        raise RuntimeError(f"Resume PDF at {path} appears to contain literal bold markup in extracted text.")
+
+
+def _validate_quick_resume_pdf(path: Path) -> None:
+    """Quick Resume must not exceed 2 pages."""
     try:
         from pypdf import PdfReader  # type: ignore[import-not-found]
     except ImportError:
@@ -649,17 +842,35 @@ def _validate_resume_pdf(path: Path) -> None:
 
     reader = PdfReader(str(path))
     page_count = len(reader.pages)
-    if page_count < 2 or page_count > 3:
+    if page_count > 2:
+        raise RuntimeError(f"Quick Resume exceeded 2 pages (got {page_count}) at {path}.")
+    if page_count < 2:
+        print(f"WARNING: Quick Resume is only {page_count} page(s) at {path} (target is 2).")
+    _assert_pdf_no_literal_bold_markup(path, reader)
+
+
+def _validate_full_resume_pdf(path: Path) -> None:
+    """Full Professional History: allow 2-3 pages; warn beyond 3."""
+    try:
+        from pypdf import PdfReader  # type: ignore[import-not-found]
+    except ImportError:
+        from PyPDF2 import PdfReader  # type: ignore[import-not-found]
+
+    reader = PdfReader(str(path))
+    page_count = len(reader.pages)
+    if page_count > 3:
         raise RuntimeError(
-            f"Expected resume PDF to be 2-3 pages, got {page_count} at {path}."
+            f"Full Professional History exceeded 3 pages (got {page_count}) at {path}."
         )
     if page_count == 3:
-        print(f"WARNING: Resume PDF is 3 pages at {path} (layout target is 2).")
-
-    extracted = "".join((page.extract_text() or "") for page in reader.pages)
-    bad_tags = ("<b>", "</b>", "<B>", "</B>", "&lt;b&gt;", "&lt;/b&gt;")
-    if any(t in extracted for t in bad_tags):
-        raise RuntimeError(f"Resume PDF at {path} appears to contain literal bold markup in extracted text.")
+        print(
+            f"WARNING: Full Professional History is 3 pages at {path} (allowed range is 2-3)."
+        )
+    if page_count < 2:
+        raise RuntimeError(
+            f"Full Professional History expected at least 2 pages, got {page_count} at {path}."
+        )
+    _assert_pdf_no_literal_bold_markup(path, reader)
 
 
 def main() -> None:
@@ -671,23 +882,28 @@ def main() -> None:
     write_kelly_resume_markdown(data, RESUME_DIR / "kelly_resume_v3.md", "v3")
     write_kelly_resume_markdown(data, RESUME_DIR / "kelly_resume_v2.md", "v2")
 
-    build_resume_v1_docx(data, OUT_DIR / "resume_v1.docx")
+    build_resume_full_docx(data, OUT_DIR / "resume_full.docx")
     build_executive_snapshot_docx(data, OUT_DIR / "executive_snapshot.docx")
 
-    build_resume_v1_pdf(data, OUT_DIR / "resume_v1.pdf")
+    build_resume_full_pdf(data, OUT_DIR / "resume_full.pdf")
+    build_resume_quick_pdf(data, OUT_DIR / "resume_2page.pdf")
     build_executive_snapshot_pdf(data, OUT_DIR / "executive_snapshot.pdf")
 
-    shutil.copyfile(OUT_DIR / "resume_v1.pdf", PUBLIC_DIR / "resume.pdf")
-    _validate_resume_pdf(PUBLIC_DIR / "resume.pdf")
+    shutil.copyfile(OUT_DIR / "resume_full.pdf", PUBLIC_DIR / "resume_full.pdf")
+    shutil.copyfile(OUT_DIR / "resume_2page.pdf", PUBLIC_DIR / "resume_2page.pdf")
+    _validate_full_resume_pdf(PUBLIC_DIR / "resume_full.pdf")
+    _validate_quick_resume_pdf(PUBLIC_DIR / "resume_2page.pdf")
 
     print("Wrote:")
     print(" -", RESUME_DIR / "kelly_resume_v2.md")
     print(" -", RESUME_DIR / "kelly_resume_v3.md")
-    print(" -", PUBLIC_DIR / "resume.pdf")
+    print(" -", PUBLIC_DIR / "resume_full.pdf")
+    print(" -", PUBLIC_DIR / "resume_2page.pdf")
     for name in [
-        "resume_v1.docx",
+        "resume_full.docx",
         "executive_snapshot.docx",
-        "resume_v1.pdf",
+        "resume_full.pdf",
+        "resume_2page.pdf",
         "executive_snapshot.pdf",
     ]:
         print(" -", OUT_DIR / name)

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { resumePdfHref } from "@/lib/resumePdfHref";
+import { resumeFullPdfHref, resumeQuickPdfHref } from "@/lib/resumePdfHref";
 
 export default function Footer() {
   return (
@@ -46,13 +46,22 @@ export default function Footer() {
           <p className="text-xs text-gray-400">
             © {new Date().getFullYear()} Kelly Peterson. Resume and portfolio available upon request.
           </p>
-          <a
-            href={resumePdfHref()}
-            download="Kelly_Peterson_resume.pdf"
-            className="text-xs text-[#1E3A5F] hover:underline cursor-pointer whitespace-nowrap"
-          >
-            Download Resume →
-          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs">
+            <a
+              href={resumeQuickPdfHref()}
+              download="Kelly_Peterson_Quick_Resume.pdf"
+              className="text-[#1E3A5F] font-semibold hover:underline cursor-pointer"
+            >
+              Quick Resume (2 Pages) →
+            </a>
+            <a
+              href={resumeFullPdfHref()}
+              download="Kelly_Peterson_Full_Professional_History.pdf"
+              className="text-gray-500 hover:text-[#1E3A5F] hover:underline cursor-pointer"
+            >
+              Full Professional History →
+            </a>
+          </div>
         </div>
       </div>
     </footer>

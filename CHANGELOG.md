@@ -4,9 +4,9 @@
 
 - **`data/kelly_resume_source.json`**: eight punchy **Signature Impact** bullets (Chapman evaluator authority + CalTPA/13 TPEs + approval/non-approval; Orange USD SDC+RSP/Inclusion + MTSS/UDL; Mission Hills reluctant reader; Anna Borba two-student story; Riley volunteer leadership; plus two scope bullets). OUSD experience tightened to **six** outcome-oriented bullets. Riley dates set to **Jun 2013 – Mar 2016**; Chapman note **caseload-based**. Credentials aligned to confirmed renewal language.
 - **`resume/kelly_resume_v2.md`** and **`resume/kelly_resume_v3.md`**: markdown exports generated from JSON.
-- **`public/resume.pdf`**: copied from generator output for site download (`/resume.pdf` with Vite `BASE_URL`).
-- **`tools/generate_resume_outputs.py`**: writes markdown + PDF/DOCX under `outputs/` and publishes `public/resume.pdf` **inside this repo only** (no external app folder sync).
-- **Site**: `SignatureImpact`, `ExperienceTimeline`, and `EducationBlock` now read from `@data/kelly_resume_source.json`; resume page PDF download points at `resume.pdf`; Orange **Unified** (not Oakland) called out explicitly.
+- **`public/resume_2page.pdf`** and **`public/resume_full.pdf`**: Quick (2-page) and Full Professional History PDFs from the generator (`?v=meta.last_updated` cache-bust via `src/lib/resumePdfHref.ts`).
+- **`tools/generate_resume_outputs.py`**: writes markdown + PDF/DOCX under `outputs/` and copies both resume PDFs into `public/` **inside this repo only** (no external app folder sync).
+- **Site**: `SignatureImpact`, `ExperienceTimeline`, and `EducationBlock` read from `@data/kelly_resume_source.json`; hero, navbar, footer, and resume page offer both PDF downloads; Orange **Unified** (not Oakland) called out explicitly.
 - **Impact stories** page now renders `impact_stories[].star_web` from the same JSON (privacy-safe; no fabricated metrics or “cousins” identifiers).
 
 ---
@@ -28,10 +28,10 @@ Story content on the website and resume is therefore aligned to the **portfolio 
 ## What was added
 
 - `data/kelly_resume_source.json`: structured, resume-aligned content (including `story_bullets` tags inside experience entries where applicable).
-- `outputs/resume_v1.docx` and `outputs/resume_v1.pdf`: ATS-oriented formatting (single-column paragraphs; no tables/columns/text boxes in the generator output).
+- `outputs/resume_full.docx`, `outputs/resume_full.pdf`, and `outputs/resume_2page.pdf`: ATS-oriented formatting (single-column paragraphs; no tables/columns/text boxes in the generator output). Quick PDF omits core competencies and compresses older roles.
 - `outputs/executive_snapshot.docx` and `outputs/executive_snapshot.pdf`: one-page snapshot aligned to the JSON.
 - `bullet_bank.md`: 20 swap-in bullets grouped by employer/role bucket.
-- `tools/generate_resume_outputs.py`: regenerates DOCX/PDF under `outputs/` and publishes `public/resume.pdf` for this Vite site.
+- `tools/generate_resume_outputs.py`: regenerates DOCX/PDF under `outputs/` and publishes `public/resume_2page.pdf` and `public/resume_full.pdf` for this Vite site.
 
 ## Content decisions (grounded, not invented)
 
@@ -43,5 +43,5 @@ Story content on the website and resume is therefore aligned to the **portfolio 
 
 ## QA checks performed
 
-- Run `python tools/generate_resume_outputs.py` after JSON edits to refresh `outputs/*`, `public/resume.pdf`, and `resume/kelly_resume_v*.md`.
+- Run `python tools/generate_resume_outputs.py` after JSON edits to refresh `outputs/*`, `public/resume_2page.pdf`, `public/resume_full.pdf`, and `resume/kelly_resume_v*.md` (bump `meta.last_updated` in JSON when you want new cache-busted URLs).
 - Vite: run `npm install` and `npm run build` in **Kellys-Resume** when validating the React site.
