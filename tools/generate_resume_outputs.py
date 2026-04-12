@@ -39,6 +39,15 @@ PARA_SPACE_AFTER_PT = 3
 ROLE_SPACE_BEFORE_PT = 5
 BULLET_SPACE_AFTER_PT = 3
 
+# Full Professional History PDF (ReportLab) — spacing / rhythm aligned with Quick polish.
+FULL_PAGE_MARGIN_INCH = 0.75
+FULL_SUMMARY_SECTION_PRE_BREAK_PT = int(round(BODY_FONT_PT * BODY_LINE_SPACING * 1.25))
+FULL_INTER_SECTION_SPACER_PT = 7
+FULL_CERT_SECTION_PRE_BREAK_PT = 12
+FULL_EXPERIENCE_PRE_BREAK_PT = 8
+FULL_EDU_SECTION_PRE_BREAK_PT = 14
+FULL_ROLE_SPACE_BEFORE_PT = 6
+
 # Quick Resume (2-page) PDF only: slightly tighter vertical rhythm.
 QUICK_BODY_LINE_SPACING = 1.06
 QUICK_PARA_SPACE_AFTER_PT = 2
@@ -342,6 +351,12 @@ def _quick_pdf_usable_width_pt() -> float:
     return float(LETTER[0]) - 2 * QUICK_PAGE_MARGIN_INCH * 72
 
 
+def _full_pdf_usable_width_pt() -> float:
+    """Content width inside Full Professional History PDF margins (points)."""
+    m = FULL_PAGE_MARGIN_INCH * inch
+    return float(LETTER[0]) - 2 * m
+
+
 def _quick_education_cell_markup(edu: dict[str, Any]) -> str:
     """Single-line education cell: bold degree | school, city | date (Quick PDF tables)."""
     deg = _escape(_strip_markup_tags(edu["degree"]))
@@ -576,6 +591,65 @@ def _rl_styles() -> dict[str, ParagraphStyle]:
         alignment=TA_LEFT,
         spaceAfter=BULLET_SPACE_AFTER_PT,
     )
+    # Core Competencies: same body font, slightly tighter vertical rhythm (scan block).
+    styles["body_core_full"] = ParagraphStyle(
+        "body_core_full",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading,
+        alignment=TA_LEFT,
+        spaceAfter=2,
+    )
+    # Centered section heading (Full PDF certifications — matches Quick visual language).
+    styles["h1_cert_full"] = ParagraphStyle(
+        "h1_cert_full",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        alignment=TA_CENTER,
+        spaceBefore=6,
+        spaceAfter=3,
+    )
+    # Education heading: left-aligned, extra air below heading (Quick-style polish).
+    styles["h1_edu_full"] = ParagraphStyle(
+        "h1_edu_full",
+        parent=base["Normal"],
+        fontName="Helvetica-Bold",
+        fontSize=float(SECTION_HEADING_PT),
+        leading=float(SECTION_HEADING_PT) + 1,
+        textColor=colors.HexColor("#111111"),
+        alignment=TA_LEFT,
+        spaceBefore=6,
+        spaceAfter=6,
+    )
+    # Two-column table cells (Full PDF): mirror Quick table rhythm with full body leading.
+    styles["full_table_cell"] = ParagraphStyle(
+        "full_table_cell",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading + 0.25,
+        alignment=TA_LEFT,
+        leftIndent=0,
+        rightIndent=0,
+        spaceBefore=0,
+        spaceAfter=2,
+    )
+    styles["full_cert_table_cell"] = ParagraphStyle(
+        "full_cert_table_cell",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=round(fs * 1.18, 2),
+        alignment=TA_LEFT,
+        leftIndent=0,
+        rightIndent=0,
+        spaceBefore=0,
+        spaceAfter=0,
+    )
     return styles
 
 
@@ -747,58 +821,87 @@ def _quick_two_column_table_style_certs() -> TableStyle:
     )
 
 
-def _append_quick_certifications_two_column(
-    story: list[Any], styles: dict[str, ParagraphStyle], certifications: list[dict[str, Any]]
+def _append_reportlab_certifications_two_column(
+    story: list[Any],
+    cell_style: ParagraphStyle,
+    certifications: list[dict[str, Any]],
+    *,
+    usable_width_pt: float,
+    gutter_pt: float = QUICK_TABLE_COL_GUTTER_PT,
+    table_h_align: str = "CENTER",
 ) -> None:
     """
-    Two-column cert grid: row 1 = both Clear credentials; row 2 = CLAD + IB PYP.
-    Left-aligned cells; improves scan without merging with Education.
+    Shared two-column certifications grid (Quick + Full PDFs).
+    Order follows `data["certifications"]`; cells are left-aligned text, no bullets.
     """
-    cell_st = styles["quick_cert_table_cell"]
-    w_use = _quick_pdf_usable_width_pt()
-    gutter = QUICK_TABLE_COL_GUTTER_PT
-    col_w = (w_use - gutter) / 2
+    col_w = (usable_width_pt - gutter_pt) / 2
     rows: list[list[Any]] = []
     for i in range(0, len(certifications), 2):
         left = Paragraph(
             _quick_cert_cell_markup(certifications[i]["name"], certifications[i]["date"]),
-            cell_st,
+            cell_style,
         )
         if i + 1 < len(certifications):
             right = Paragraph(
                 _quick_cert_cell_markup(certifications[i + 1]["name"], certifications[i + 1]["date"]),
-                cell_st,
+                cell_style,
             )
         else:
-            right = Paragraph("", cell_st)
+            right = Paragraph("", cell_style)
         rows.append([left, right])
-    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="CENTER")
+    tbl = Table(rows, colWidths=[col_w, col_w], hAlign=table_h_align)
     tbl.setStyle(_quick_two_column_table_style_certs())
     story.append(tbl)
+
+
+def _append_reportlab_education_two_column(
+    story: list[Any],
+    cell_style: ParagraphStyle,
+    edu_rows: list[dict[str, Any]],
+    *,
+    usable_width_pt: float,
+    gutter_pt: float = QUICK_TABLE_COL_GUTTER_PT,
+    table_h_align: str = "LEFT",
+) -> None:
+    """Shared two-column education grid (Quick + Full PDFs); no vertical divider."""
+    col_w = (usable_width_pt - gutter_pt) / 2
+    rows: list[list[Any]] = []
+    for i in range(0, len(edu_rows), 2):
+        left = Paragraph(_quick_education_cell_markup(edu_rows[i]), cell_style)
+        if i + 1 < len(edu_rows):
+            right = Paragraph(_quick_education_cell_markup(edu_rows[i + 1]), cell_style)
+        else:
+            right = Paragraph("", cell_style)
+        rows.append([left, right])
+    tbl = Table(rows, colWidths=[col_w, col_w], hAlign=table_h_align)
+    tbl.setStyle(_quick_two_column_table_style())
+    story.append(tbl)
+
+
+def _append_quick_certifications_two_column(
+    story: list[Any], styles: dict[str, ParagraphStyle], certifications: list[dict[str, Any]]
+) -> None:
+    """Quick PDF: two-column certifications with Quick margins."""
+    _append_reportlab_certifications_two_column(
+        story,
+        styles["quick_cert_table_cell"],
+        certifications,
+        usable_width_pt=_quick_pdf_usable_width_pt(),
+        table_h_align="CENTER",
+    )
 
 
 def _append_quick_education_two_column(
     story: list[Any], styles: dict[str, ParagraphStyle], edu_rows: list[dict[str, Any]]
 ) -> None:
-    """
-    Two-column education grid: pair degrees per row; single line per cell
-    (bold degree | school, location | date). Body text left-aligned only.
-    """
-    cell_st = styles["quick_table_cell"]
-    w_use = _quick_pdf_usable_width_pt()
-    gutter = QUICK_TABLE_COL_GUTTER_PT
-    col_w = (w_use - gutter) / 2
-    rows: list[list[Any]] = []
-    for i in range(0, len(edu_rows), 2):
-        left = Paragraph(_quick_education_cell_markup(edu_rows[i]), cell_st)
-        if i + 1 < len(edu_rows):
-            right = Paragraph(_quick_education_cell_markup(edu_rows[i + 1]), cell_st)
-        else:
-            right = Paragraph("", cell_st)
-        rows.append([left, right])
-    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="LEFT")
-    tbl.setStyle(_quick_two_column_table_style())
-    story.append(tbl)
+    """Quick PDF: two-column education with Quick margins."""
+    _append_reportlab_education_two_column(
+        story,
+        styles["quick_table_cell"],
+        edu_rows,
+        usable_width_pt=_quick_pdf_usable_width_pt(),
+        table_h_align="LEFT",
+    )
 
 
 def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
@@ -815,26 +918,38 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
         )
     )
 
+    story.append(Spacer(1, FULL_SUMMARY_SECTION_PRE_BREAK_PT))
     story.append(Paragraph(_escape("SUMMARY"), styles["h1"]))
     for line in data["summary"]:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
 
+    story.append(Spacer(1, FULL_INTER_SECTION_SPACER_PT))
     story.append(Paragraph(_escape("SIGNATURE IMPACT"), styles["h1"]))
     for b in data["signature_impact"][:RESUME_SIGNATURE_RENDER_LIMIT]:
         story.append(_rl_bullet_paragraph(b, styles["bullet"]))
 
+    story.append(Spacer(1, FULL_INTER_SECTION_SPACER_PT))
     story.append(Paragraph(_escape("CORE COMPETENCIES"), styles["h1"]))
     for cc_line in _core_competency_lines(data["core_competencies"]):
-        story.append(Paragraph(_text_for_output(cc_line), styles["body"]))
+        story.append(Paragraph(_text_for_output(cc_line), styles["body_core_full"]))
 
-    story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
-    for item in data["certifications"]:
-        story.append(_rl_bullet_paragraph(f"{item['name']} — {item['date']}", styles["bullet"]))
+    story.append(Spacer(1, FULL_CERT_SECTION_PRE_BREAK_PT))
+    story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1_cert_full"]))
+    story.append(Spacer(1, 2))
+    _append_reportlab_certifications_two_column(
+        story,
+        styles["full_cert_table_cell"],
+        data["certifications"],
+        usable_width_pt=_full_pdf_usable_width_pt(),
+        table_h_align="CENTER",
+    )
 
+    story.append(Spacer(1, FULL_EXPERIENCE_PRE_BREAK_PT))
     story.append(Paragraph(_escape("PROFESSIONAL EXPERIENCE"), styles["h1"]))
+    story.append(Spacer(1, 4))
     for idx, role in enumerate(data["experience"]):
         if idx > 0:
-            story.append(Spacer(1, ROLE_SPACE_BEFORE_PT))
+            story.append(Spacer(1, FULL_ROLE_SPACE_BEFORE_PT))
         header = _strip_markup_tags(
             f"{role['title']} | {role['employer']}"
             + (f", {role['school_site']}" if role.get("school_site") else "")
@@ -846,22 +961,26 @@ def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
         for b in role["bullets"]:
             story.append(_rl_bullet_paragraph(b, styles["bullet"]))
 
-    story.append(Paragraph(_escape("EDUCATION"), styles["h1"]))
-    edu_rows = data["education"]
-    for i, edu in enumerate(edu_rows):
-        blk = _rl_education_degree_block_markup(edu)
-        estyle = styles["edu_block"] if i < len(edu_rows) - 1 else styles["edu_date_last"]
-        story.append(Paragraph(blk, estyle))
+    story.append(Spacer(1, FULL_EDU_SECTION_PRE_BREAK_PT))
+    story.append(Paragraph(_escape("EDUCATION"), styles["h1_edu_full"]))
+    _append_reportlab_education_two_column(
+        story,
+        styles["full_table_cell"],
+        data["education"],
+        usable_width_pt=_full_pdf_usable_width_pt(),
+        table_h_align="LEFT",
+    )
 
     leadership = data.get("leadership_committees") or []
     if leadership:
+        story.append(Spacer(1, FULL_INTER_SECTION_SPACER_PT))
         story.append(Paragraph(_escape("SELECTED LEADERSHIP & COMMITTEES"), styles["h1"]))
         for item in leadership:
             story.append(_rl_bullet_paragraph(item, styles["bullet"]))
 
     story.append(Spacer(1, 0.03 * inch))
 
-    margin = 0.75 * inch
+    margin = FULL_PAGE_MARGIN_INCH * inch
     doc = SimpleDocTemplate(
         str(path),
         pagesize=LETTER,
