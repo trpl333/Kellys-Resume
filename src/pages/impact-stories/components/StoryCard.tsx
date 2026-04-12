@@ -35,7 +35,7 @@ export default function StoryCard({
   demonstrates = [],
 }: StoryCardProps) {
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-[#E4E1DA] bg-white shadow-[0_2px_20px_-10px_rgba(30,58,95,0.1)] transition-shadow duration-300 hover:shadow-[0_10px_36px_-14px_rgba(30,58,95,0.16)]">
+    <article className="group relative overflow-hidden rounded-2xl border border-[#E4E1DA] bg-white shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)] transition-shadow duration-300 hover:shadow-[0_10px_36px_-14px_rgba(30,58,95,0.14)]">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#1E3A5F]/40 via-[#1E3A5F]/20 to-transparent opacity-80" aria-hidden />
 
       <div className="p-7 md:p-9 lg:p-10">

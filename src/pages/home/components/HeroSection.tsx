@@ -84,13 +84,13 @@ export default function HeroSection() {
               <a
                 href={`${import.meta.env.BASE_URL}resume.pdf`}
                 download="Kelly_Peterson_resume.pdf"
-                className="inline-flex justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-sm"
+                className="inline-flex min-h-11 justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-sm"
               >
                 Download Resume
               </a>
               <Link
                 to="/impact-stories"
-                className="inline-flex justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-[#1E3A5F] text-white border-2 border-white/90 ring-2 ring-white/20 hover:bg-[#162d4a] hover:border-white transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-md"
+                className="inline-flex min-h-11 justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-[#1E3A5F] text-white border-2 border-white/90 ring-2 ring-white/20 hover:bg-[#162d4a] hover:border-white transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-md"
               >
                 View Impact Stories
               </Link>

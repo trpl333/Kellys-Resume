@@ -24,11 +24,15 @@ export default function Footer() {
               <Link to="/" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Home</Link>
               <Link to="/resume" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Resume</Link>
               <Link to="/impact-stories" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Impact Stories</Link>
-              <Link to="/leadership" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Leadership</Link>
+              <Link
+                to={{ pathname: "/", hash: "leadership" }}
+                className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer"
+              >
+                Leadership
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#1E3A5F]">Connect</p>
-              <Link to="/testimonials" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Testimonials</Link>
               <Link to="/contact" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">Contact</Link>
               <a href="mailto:kellykaypeterson@gmail.com" className="text-sm text-gray-500 hover:text-[#1E3A5F] transition-colors cursor-pointer">
                 kellykaypeterson@gmail.com

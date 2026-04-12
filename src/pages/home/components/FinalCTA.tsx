@@ -9,7 +9,7 @@ export default function FinalCTA() {
         </h2>
         <Link
           to="/contact"
-          className="inline-block px-10 py-5 bg-[#1E3A5F] text-white rounded-full text-sm font-semibold hover:bg-[#162d4a] transition-all duration-200 whitespace-nowrap cursor-pointer"
+          className="inline-flex min-h-12 items-center justify-center px-10 py-4 sm:py-5 bg-[#1E3A5F] text-white rounded-full text-sm font-semibold hover:bg-[#162d4a] transition-all duration-200 text-center cursor-pointer shadow-md"
         >
           Contact Kelly
         </Link>

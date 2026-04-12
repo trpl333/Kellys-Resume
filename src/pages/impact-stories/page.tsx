@@ -67,10 +67,10 @@ export default function ImpactStoriesPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1E3A5F] mb-4">
             Student outcomes
           </p>
-          <h1 className="font-['Crimson_Pro'] text-5xl md:text-6xl font-bold text-[#2D2D2D] mb-5 leading-tight">
+          <h1 className="font-['Crimson_Pro'] text-4xl sm:text-5xl md:text-6xl font-bold text-[#2D2D2D] mb-5 leading-tight text-balance">
             Impact Stories
           </h1>
-          <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed font-['Inter'] font-medium">
+          <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed font-['Inter'] font-medium text-pretty">
             Real classroom moments. Real student change. Privacy always respected.
           </p>
 
@@ -116,7 +116,7 @@ export default function ImpactStoriesPage() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#1E3A5F] shadow-md transition-colors hover:bg-white/95 cursor-pointer"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#1E3A5F] shadow-md transition-colors hover:bg-white/95 cursor-pointer"
           >
             Contact Kelly
           </Link>

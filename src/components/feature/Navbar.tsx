@@ -1,14 +1,28 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const navLinks = [
+type NavLinkItem =
+  | { label: string; path: string }
+  | { label: string; path: string; hash: string };
+
+const navLinks: NavLinkItem[] = [
   { label: "Home", path: "/" },
   { label: "Resume", path: "/resume" },
   { label: "Impact Stories", path: "/impact-stories" },
-  { label: "Leadership", path: "/leadership" },
-  { label: "Testimonials", path: "/testimonials" },
+  { label: "Leadership", path: "/", hash: "leadership" },
   { label: "Contact", path: "/contact" },
 ];
+
+function navTo(item: NavLinkItem) {
+  return "hash" in item ? ({ pathname: item.path, hash: item.hash } as const) : item.path;
+}
+
+function navIsActive(pathname: string, hash: string, item: NavLinkItem) {
+  if ("hash" in item) {
+    return pathname === item.path && hash === `#${item.hash}`;
+  }
+  return pathname === item.path;
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,10 +63,10 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
-              key={link.path}
-              to={link.path}
+              key={link.label}
+              to={navTo(link)}
               className={`text-sm font-medium tracking-wide transition-colors duration-200 whitespace-nowrap cursor-pointer ${
-                location.pathname === link.path
+                navIsActive(location.pathname, location.hash, link)
                   ? "text-[#1E3A5F]"
                   : scrolled || !isHome
                   ? "text-gray-600 hover:text-[#1E3A5F]"
@@ -69,7 +83,7 @@ export default function Navbar() {
           <a
             href={`${import.meta.env.BASE_URL}resume.pdf`}
             download="Kelly_Peterson_resume.pdf"
-            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 whitespace-nowrap cursor-pointer ${
+            className={`inline-flex min-h-10 items-center justify-center px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 whitespace-nowrap cursor-pointer ${
               scrolled || !isHome
                 ? "border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white"
                 : "border-white text-white hover:bg-white hover:text-[#1E3A5F]"
@@ -79,7 +93,7 @@ export default function Navbar() {
           </a>
           <Link
             to="/contact"
-            className="px-4 py-2 rounded-full text-sm font-medium bg-[#1E3A5F] text-white hover:bg-[#162d4a] transition-all duration-200 whitespace-nowrap cursor-pointer"
+            className="inline-flex min-h-10 items-center justify-center px-4 py-2 rounded-full text-sm font-medium bg-[#1E3A5F] text-white hover:bg-[#162d4a] transition-all duration-200 whitespace-nowrap cursor-pointer"
           >
             Contact
           </Link>
@@ -102,10 +116,10 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-t border-gray-100 px-6 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <Link
-              key={link.path}
-              to={link.path}
-              className={`text-sm font-medium py-2 cursor-pointer ${
-                location.pathname === link.path
+              key={link.label}
+              to={navTo(link)}
+              className={`text-sm font-medium py-3 min-h-11 flex items-center cursor-pointer ${
+                navIsActive(location.pathname, location.hash, link)
                   ? "text-[#1E3A5F]"
                   : "text-gray-600 hover:text-[#1E3A5F]"
               }`}
@@ -117,13 +131,13 @@ export default function Navbar() {
             <a
               href={`${import.meta.env.BASE_URL}resume.pdf`}
               download="Kelly_Peterson_resume.pdf"
-              className="px-4 py-2 rounded-full text-sm font-medium border border-[#1E3A5F] text-[#1E3A5F] text-center whitespace-nowrap cursor-pointer"
+              className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium border border-[#1E3A5F] text-[#1E3A5F] text-center whitespace-nowrap cursor-pointer"
             >
               Download Resume
             </a>
             <Link
               to="/contact"
-              className="px-4 py-2 rounded-full text-sm font-medium bg-[#1E3A5F] text-white text-center whitespace-nowrap cursor-pointer"
+              className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium bg-[#1E3A5F] text-white text-center whitespace-nowrap cursor-pointer"
             >
               Contact
             </Link>

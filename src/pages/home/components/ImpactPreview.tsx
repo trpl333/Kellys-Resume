@@ -59,7 +59,7 @@ export default function ImpactPreview() {
               </p>
               <Link
                 to={story.link}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E3A5F] hover:text-[#162d4a] transition-colors cursor-pointer"
+                className="mt-6 inline-flex min-h-10 items-center gap-1.5 py-1 text-sm font-semibold text-[#1E3A5F] hover:text-[#162d4a] transition-colors cursor-pointer"
               >
                 Read full story
                 <span aria-hidden>→</span>

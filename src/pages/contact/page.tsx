@@ -13,10 +13,19 @@ export default function ContactPage() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const body = [`From: ${name || "(no name)"}`, `Reply-to: ${email || "(no email)"}`, "", message || "(no message)"].join(
-      "\n",
-    );
-    const subject = encodeURIComponent("Message from Kelly Peterson website");
+    const safeName = name.trim() || "(not provided)";
+    const safeEmail = email.trim() || "(not provided)";
+    const safeMessage = message.trim() || "(No message text provided.)";
+    const body = [
+      "Website contact form - Kelly Peterson",
+      "",
+      `Name: ${safeName}`,
+      `Reply-to email: ${safeEmail}`,
+      "",
+      "Message:",
+      safeMessage,
+    ].join("\n");
+    const subject = encodeURIComponent("Website contact form - Kelly Peterson");
     const mail = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
     window.location.href = mail;
   }
@@ -29,10 +38,10 @@ export default function ContactPage() {
       <section className="bg-gradient-to-b from-white to-[#FAFAF8] pt-32 pb-16 md:pb-20 border-b border-[#E8E0D0]/50">
         <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1E3A5F] mb-4">Get in Touch</p>
-          <h1 className="font-['Crimson_Pro'] text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#2D2D2D] mb-6 leading-tight">
+          <h1 className="font-['Crimson_Pro'] text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#2D2D2D] mb-6 leading-tight text-balance">
             Let&apos;s talk about what your students need most.
           </h1>
-          <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed font-['Inter']">
+          <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed font-['Inter'] text-pretty">
             Every classroom is different. I&apos;m always open to thoughtful conversations about student support, collaboration,
             and what&apos;s actually working.
           </p>
@@ -42,13 +51,13 @@ export default function ContactPage() {
       {/* Contact options */}
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
-          <p className="max-w-2xl mx-auto mb-12 md:mb-14 text-center text-base md:text-lg text-[#5a554c] leading-relaxed font-['Inter'] font-medium">
+          <p className="max-w-2xl mx-auto mb-12 md:mb-14 text-center text-base md:text-lg text-[#5a554c] leading-relaxed font-['Inter'] font-medium text-pretty px-1 sm:px-0">
             If something you read resonated with you, I&apos;d love to hear about your students and what you&apos;re seeing.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Email */}
-            <div className="flex flex-col rounded-2xl border border-[#E4E1DA] bg-white p-8 md:p-9 shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)]">
+            <div className="order-2 flex flex-col rounded-2xl border border-[#E4E1DA] bg-white p-8 md:p-9 shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)] lg:order-1">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.08] text-[#1E3A5F]">
                 <i className="ri-mail-line text-xl" aria-hidden />
               </div>
@@ -62,8 +71,8 @@ export default function ContactPage() {
               <p className="mt-4 text-sm text-gray-500 leading-relaxed">Best for detailed questions.</p>
             </div>
 
-            {/* Phone — primary path */}
-            <div className="relative flex flex-col rounded-2xl border-2 border-[#1E3A5F]/28 bg-gradient-to-b from-[#F9F6F1] to-[#EDE8DF] p-8 md:p-9 shadow-[0_10px_40px_-16px_rgba(30,58,95,0.22)] ring-1 ring-[#1E3A5F]/[0.1] transition-shadow duration-300 hover:shadow-[0_14px_44px_-14px_rgba(30,58,95,0.26)]">
+            {/* Phone — primary path (first on mobile) */}
+            <div className="order-1 relative flex flex-col rounded-2xl border-2 border-[#1E3A5F]/22 bg-gradient-to-b from-[#FAF8F5] to-[#F0EBE4] p-8 md:p-9 shadow-[0_8px_32px_-14px_rgba(30,58,95,0.16)] ring-1 ring-[#1E3A5F]/[0.08] transition-shadow duration-300 hover:shadow-[0_10px_36px_-12px_rgba(30,58,95,0.2)] lg:order-2">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.12] text-[#1E3A5F]">
                 <i className="ri-phone-line text-xl" aria-hidden />
               </div>
@@ -75,7 +84,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="flex flex-col rounded-2xl border border-[#E4E1DA] bg-white p-8 md:p-9 shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)] lg:row-span-1">
+            <div className="order-3 flex flex-col rounded-2xl border border-[#E4E1DA] bg-white p-8 md:p-9 shadow-[0_2px_20px_-10px_rgba(30,58,95,0.08)] lg:row-span-1 lg:order-3">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.08] text-[#1E3A5F]">
                 <i className="ri-chat-3-line text-xl" aria-hidden />
               </div>
@@ -125,7 +134,7 @@ export default function ContactPage() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-1 inline-flex w-full items-center justify-center rounded-full bg-[#1E3A5F] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#162d4a] cursor-pointer"
+                  className="mt-1 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#1E3A5F] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#162d4a] cursor-pointer"
                 >
                   Send Message to Kelly
                 </button>
@@ -133,7 +142,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <p className="mt-14 md:mt-16 max-w-2xl mx-auto text-center text-sm md:text-base text-[#555] leading-relaxed">
+          <p className="mt-14 md:mt-16 max-w-2xl mx-auto text-center text-sm md:text-base text-[#555] leading-relaxed text-pretty px-1 sm:px-0">
             Every message is read personally. I value thoughtful, respectful communication and will respond as soon as I can.
           </p>
 
