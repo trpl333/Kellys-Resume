@@ -108,7 +108,7 @@ def write_kelly_resume_markdown(data: dict[str, Any], path: Path, label: str) ->
         lines.append(cc_line)
     lines.extend(["", "## Certifications & Credentials", ""])
     for item in data["certifications"]:
-        lines.append(f"- **{item['name']}** — {item['date']}")
+        lines.append(f"- {item['name']} — {item['date']}")
     lines.extend(["", "## Professional Experience", ""])
     for role in data["experience"]:
         lines.append(f"### {role['title']}")
@@ -406,18 +406,16 @@ def build_executive_snapshot_docx(data: dict[str, Any], path: Path) -> None:
         add_bullet(document, line)
 
     add_heading(document, "Credentials (quick view)")
-    cred_lines = [
-        f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']})",
-        "Clear Education Specialist Mild/Moderate (June 2019) | Multiple Subject Teaching Credential (Renewal January 1, 2021) | IB PYP (March 2007) | CLAD (November 2006)",
-    ]
-    for line in cred_lines:
-        p3 = document.add_paragraph(line)
-        for run in p3.runs:
-            run.font.name = "Calibri"
-            run.font.size = Pt(BODY_FONT_PT)
-        p3.paragraph_format.space_after = Pt(PARA_SPACE_AFTER_PT)
-        p3.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
-        p3.paragraph_format.line_spacing = BODY_LINE_SPACING
+    edu_quick = f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']})"
+    p3 = document.add_paragraph(edu_quick)
+    for run in p3.runs:
+        run.font.name = "Calibri"
+        run.font.size = Pt(BODY_FONT_PT)
+    p3.paragraph_format.space_after = Pt(PARA_SPACE_AFTER_PT)
+    p3.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+    p3.paragraph_format.line_spacing = BODY_LINE_SPACING
+    for item in data["certifications"]:
+        add_bullet(document, f"{item['name']} — {item['date']}")
 
     document.save(path)
 
@@ -531,8 +529,8 @@ def build_resume_v1_pdf(data: dict[str, Any], path: Path) -> None:
         story.append(Paragraph(_text_for_output(cc_line), styles["body"]))
 
     story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
-    cred_compact = " | ".join(f"{item['name']} — {item['date']}" for item in data["certifications"])
-    story.append(Paragraph(_text_for_output(cred_compact), styles["body"]))
+    for item in data["certifications"]:
+        story.append(_rl_bullet_paragraph(f"{item['name']} — {item['date']}", styles["bullet"]))
 
     story.append(Paragraph(_escape("PROFESSIONAL EXPERIENCE"), styles["h1"]))
     for idx, role in enumerate(data["experience"]):
@@ -619,12 +617,16 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
         story.append(_rl_bullet_paragraph(line, styles["bullet"]))
 
     story.append(Paragraph(_escape("CREDENTIALS (QUICK VIEW)"), styles["h1"]))
-    cred = (
-        f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']}) — "
-        "Clear Education Specialist Mild/Moderate (June 2019); Multiple Subject Teaching Credential "
-        "(Renewal January 1, 2021); IB PYP (March 2007); CLAD (November 2006)"
+    story.append(
+        Paragraph(
+            _text_for_output(
+                f"{data['education'][0]['degree']}, {data['education'][0]['school']} ({data['education'][0]['date']})"
+            ),
+            styles["body"],
+        )
     )
-    story.append(Paragraph(_text_for_output(cred), styles["body"]))
+    for item in data["certifications"]:
+        story.append(_rl_bullet_paragraph(f"{item['name']} — {item['date']}", styles["bullet"]))
 
     margin = 0.75 * inch
     doc = SimpleDocTemplate(

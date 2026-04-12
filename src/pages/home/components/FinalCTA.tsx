@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import resume from "@data/kelly_resume_source.json";
+
+const contact = resume.contact as { city_state_zip: string; phone: string; email: string };
 
 export default function FinalCTA() {
   return (
@@ -14,7 +17,7 @@ export default function FinalCTA() {
           Contact Kelly
         </Link>
         <p className="mt-6 text-sm text-gray-400 font-['Inter']">
-          Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
+          {contact.city_state_zip} | {contact.phone} | {contact.email}
         </p>
       </div>
     </section>

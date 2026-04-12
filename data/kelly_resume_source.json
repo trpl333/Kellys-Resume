@@ -13,7 +13,7 @@
   },
   "contact": {
     "phone": "949-556-5378",
-    "city_state_zip": "Mission Viejo, CA",
+    "city_state_zip": "Mission Viejo, CA 92692",
     "street": "23379 Ridgeway, Mission Viejo, CA 92692",
     "email": "kellykaypeterson@gmail.com"
   },
@@ -49,20 +49,20 @@
   ],
   "certifications": [
     {
-      "name": "Clear Education Specialist Mild/Moderate",
+      "name": "Clear Education Specialist Credential (Mild/Moderate), California",
       "date": "June 2019"
     },
     {
-      "name": "Multiple Subject Teaching Credential",
-      "date": "Renewal January 1, 2021"
+      "name": "Clear Multiple Subject Teaching Credential, California",
+      "date": "Renewed January 2021"
     },
     {
-      "name": "IB PYP",
-      "date": "March 2007"
-    },
-    {
-      "name": "CLAD",
+      "name": "Crosscultural, Language, and Academic Development (CLAD) Certification",
       "date": "November 2006"
+    },
+    {
+      "name": "International Baccalaureate Primary Years Programme (IB PYP) Certification",
+      "date": "March 2007"
     }
   ],
   "education": [

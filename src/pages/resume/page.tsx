@@ -5,6 +5,7 @@ import EducationBlock from "./components/EducationBlock";
 import resume from "@data/kelly_resume_source.json";
 
 const summaryParagraphs = resume.summary as string[];
+const contact = resume.contact as { city_state_zip: string; phone: string; email: string };
 
 export default function ResumePage() {
   return (
@@ -48,7 +49,7 @@ export default function ResumePage() {
             </h2>
             <p className="text-sm text-gray-500 mb-1">Education Specialist (Special Education)</p>
             <p className="text-sm text-gray-500 mb-6">
-              Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
+              {contact.city_state_zip} | {contact.phone} | {contact.email}
             </p>
             {summaryParagraphs.map((paragraph, i) => (
               <p

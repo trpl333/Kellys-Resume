@@ -5,7 +5,7 @@
 ## Header
 
 - **Kelly Peterson**
-- Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
+- Mission Viejo, CA 92692 | 949-556-5378 | kellykaypeterson@gmail.com
 
 ## Summary
 
@@ -31,10 +31,10 @@ Family partnership · Paraprofessional leadership · Formal observation & writte
 
 ## Certifications & Credentials
 
-- **Clear Education Specialist Mild/Moderate** — June 2019
-- **Multiple Subject Teaching Credential** — Renewal January 1, 2021
-- **IB PYP** — March 2007
-- **CLAD** — November 2006
+- Clear Education Specialist Credential (Mild/Moderate), California — June 2019
+- Clear Multiple Subject Teaching Credential, California — Renewed January 2021
+- Crosscultural, Language, and Academic Development (CLAD) Certification — November 2006
+- International Baccalaureate Primary Years Programme (IB PYP) Certification — March 2007
 
 ## Professional Experience
 
