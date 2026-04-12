@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { resumePdfHref } from "@/lib/resumePdfHref";
 
 const BG_IMAGES = [
   `${import.meta.env.BASE_URL}kelly-bg-1.png`,
@@ -84,7 +85,7 @@ export default function HeroSection() {
           <div className="max-w-xl rounded-2xl border border-white/20 bg-white/[0.12] backdrop-blur-md shadow-[0_12px_40px_-12px_rgba(0,0,0,0.45)] p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href={`${import.meta.env.BASE_URL}resume.pdf`}
+                href={resumePdfHref()}
                 download="Kelly_Peterson_resume.pdf"
                 className="inline-flex min-h-11 justify-center items-center px-8 py-3.5 rounded-full text-sm font-semibold bg-white text-[#1E3A5F] hover:bg-white/95 transition-all duration-200 text-center whitespace-nowrap cursor-pointer shadow-sm"
               >

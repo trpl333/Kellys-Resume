@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { resumePdfHref } from "@/lib/resumePdfHref";
 
 export default function Footer() {
   return (
@@ -46,7 +47,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Kelly Peterson. Resume and portfolio available upon request.
           </p>
           <a
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            href={resumePdfHref()}
             download="Kelly_Peterson_resume.pdf"
             className="text-xs text-[#1E3A5F] hover:underline cursor-pointer whitespace-nowrap"
           >

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { resumePdfHref } from "@/lib/resumePdfHref";
 
 type NavLinkItem =
   | { label: string; path: string }
@@ -81,7 +82,7 @@ export default function Navbar() {
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            href={resumePdfHref()}
             download="Kelly_Peterson_resume.pdf"
             className={`inline-flex min-h-10 items-center justify-center px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 whitespace-nowrap cursor-pointer ${
               scrolled || !isHome
@@ -129,7 +130,7 @@ export default function Navbar() {
           ))}
           <div className="flex flex-col gap-3 pt-4 border-t border-gray-100">
             <a
-              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              href={resumePdfHref()}
               download="Kelly_Peterson_resume.pdf"
               className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium border border-[#1E3A5F] text-[#1E3A5F] text-center whitespace-nowrap cursor-pointer"
             >

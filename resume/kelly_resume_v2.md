@@ -9,24 +9,27 @@
 
 ## Summary
 
-I’ve taught TK–8 special education for 26 years—mostly SDC and RSP/Inclusion—where services have to match co-taught blocks and real IEP minutes.
-
-Chapman Field Supervisor: CalTPA and 13-TPE observations in schools, then completion recommendations—including non-approval when warranted.
+TK–8 Special Education teacher with 26+ years of experience across Special Day Class (SDC) and Resource Specialist Program (RSP)/Inclusion settings. Known for aligning instruction with real-time classroom demands, IEP implementation, and measurable student progress. Serves as a Chapman University Field Supervisor, evaluating credential candidates using California Teaching Performance Assessment (CalTPA) and Teaching Performance Expectations (TPEs), including formal completion recommendations.
 
 ## Signature Impact
 
-- Chapman evaluator: CalTPA + 13 TPEs evidence; recommends completion via approval or non-approval.
-- Olive (OUSD): SDC + RSP/Inclusion aligned with live co-teaching and scheduled IEP minutes.
-- Mission Hills English: moved a reluctant reader from avoidance to novel electives across two years (privacy-safe).
-- Anna Borba: earned two flagged students back into classwork; families rejoined school life after long absences (privacy-safe).
-- CUSD Riley volunteer: grade-wide Revolutionary War stations; weekly fifth-grade and SPED reading probes.
-- Chino tenure: fifth-grade Master Teacher/GLC, RTI, SELPA behavior team, science fair, SSC, textbook adoption.
-- Uses running lesson notes and district scores in IEP reviews so services change with the student.
-- Chapman debriefs: candidates leave with specific lesson fixes matched to flagged TPE lines.
+- Chapman Field Supervisor: Reviews candidate performance against the California Teaching Performance Assessment (CalTPA) and all 13 Teaching Performance Expectations (TPEs), and issues completion or non-approval recommendations when the evidence warrants.
+- Chapman Field Supervisor: Leads post-observation debriefs that connect lesson, management, and student data to specific TPE indicators. Candidates leave with concrete changes to apply the next day.
+- Orange Unified, Olive Elementary: Aligns Special Day Class (SDC) and Resource Specialist Program (RSP) inclusion services with live co-teaching and scheduled Individualized Education Program (IEP) minutes. Classroom practice matches the agreed service plan.
+- Orange Unified, Olive Elementary: Uses running lesson notes and district scores in IEP reviews. Services adjust when student performance changes, not only at annual paperwork cycles.
+- Mission Hills Junior High English: Guided a reader from avoidance through two years of growing engagement into high-school novel electives. The student later described this stretch as the point they became willing to try (privacy-safe).
+- Anna Borba Elementary: Restored two high-need students to sustained classwork with daily check-ins and clear expectations after chronic disengagement (privacy-safe).
+- Anna Borba Elementary: Brought caregivers back into school life after long absences. Years later, both students described the steady support as formative to their stability (privacy-safe).
+- Capistrano Unified, Riley Elementary (volunteer): Ran a grade-wide Revolutionary War station rotation with clear materials and timing. Every fifth-grade class participated without losing instructional minutes to logistics.
+- Capistrano Unified, Riley Elementary (volunteer): Delivered weekly fifth-grade and special education reading probes. Teams adjusted interventions from current data rather than waiting for quarterly snapshots.
+- Chino Unified, Anna Borba Elementary: Led fifth-grade Master Teacher and grade-level coordinator work, directed the science fair, and supported textbook adoption. Literacy and STEM routines stayed coherent across the site.
+- Chino Unified, Anna Borba Elementary: Earned International Baccalaureate Early Years certification and co-taught DARE with Chino Police Department. Students saw consistent expectations across subject areas.
+- Chino Unified, Anna Borba Elementary: Served on Response to Intervention (RTI) and Special Education Local Plan Area (SELPA) academic/behavior teams, and trained Conflict Managers schoolwide. Schoolwide behavior support stayed consistent.
+- Chino Unified, Anna Borba Elementary: Represented the site on School Site Council (SSC). Staff and family input shaped building-level decisions about programs and resources.
 
 ## Core Competencies
 
-SDC & RSP/Inclusion · IEP development & compliance · MTSS/RTI teaming · UDL-informed instruction · Progress monitoring & assessment
+SDC & RSP/Inclusion · IEP development & compliance · Multi-Tiered System of Supports (MTSS) / RTI teaming · Universal Design for Learning (UDL)-informed instruction · Progress monitoring & assessment
 Family partnership · Paraprofessional leadership · Formal observation & written evaluation (13 TPEs) · CalTPA-aligned coaching · Site & district committees
 
 ## Certifications & Credentials
@@ -42,62 +45,78 @@ Family partnership · Paraprofessional leadership · Formal observation & writte
 
 Orange Unified School District, Olive Elementary · Orange, CA · August 2017–Present
 
-- Mild/moderate Olive caseload: SDC and RSP/Inclusion across whole group, small groups, and pull-aside blocks.
-- MTSS/RTI + UDL: adjusts scaffolds when progress monitoring shows gains—or stalls.
-- Co-teaches with gen-ed teachers so inclusion minutes happen in actual lessons, not on paper only.
-- Keeps families in the loop on goals, behavior plans, and IEP dates before meetings, not after surprises.
-- Trains paras on transitions and classroom routines so students land ready to learn in each block.
+- Leads a mild/moderate Olive caseload across Special Day Class (SDC) and Resource Specialist Program (RSP) inclusion in whole group, small group, and pull-aside blocks.
+- Keeps scheduled service minutes aligned with the instruction students actually receive.
+- Tracks Multi-Tiered System of Supports (MTSS) and Response to Intervention (RTI) data to tighten or loosen scaffolds based on student response.
+- Aligns Universal Design for Learning (UDL) scaffolds so entry points stay clear when progress quickens or stalls.
+- Co-teaches with general education teachers so inclusion minutes appear in live lessons, not only on compliance paperwork.
+- Communicates with families about goals, behavior plans, and Individualized Education Program (IEP) dates before meetings, keeping decisions predictable and informed.
+- Trains paraprofessionals on transitions and routines so students enter each instructional block ready to learn with fewer lost minutes.
 
 ### Field Supervisor, Special Education & Multiple Subject Credential Candidates
 
 Chapman University, College of Educational Studies (field supervision) · Orange, CA · August 2020–Present · *Caseload-based*
 
-- University field supervisor for Special Ed and Multiple Subject candidates through clinical practice and student teaching placements.
-- Feedback ties lessons, management, and data to all 13 TPEs and each CalTPA checkpoint.
-- Formal observations with pre- and post-conferences; evidence-based next steps candidates can try the next day.
-- Works with mentors and program leads on concerns, paperwork quality, and fit of each placement—confidentiality first.
-- Joins program meetings where teams decide whether candidates are ready for added classroom responsibility.
-- Submits completion recommendations—including non-approval when performance and documentation require it.
+- Serves as university field supervisor for Special Education and Multiple Subject candidates in clinical practice and student teaching, aligning placements with program standards and demonstrated readiness.
+- Aligns written feedback with lessons, management, and classroom data tied to all 13 Teaching Performance Expectations (TPEs).
+- Maps observation and artifact evidence to each California Teaching Performance Assessment (CalTPA) checkpoint.
+- Conducts formal observations with pre- and post-conferences, and assigns evidence-based next steps for the following day.
+- Partners with mentors and program leads on paperwork, placement fit, and concerns while prioritizing confidentiality.
+- Joins program meetings where teams decide readiness for added classroom responsibility. Staffing changes follow documented performance, not informal opinion alone.
+- Submits completion recommendations, including non-approval when performance or documentation requires it. Recommendations match what teams observed in the field.
 
 ### Special Education Instructional Aide
 
 Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate · Rancho Santa Margarita, CA · March 2016–June 2017
 
-- Small-group and 1:1 aide work under the education specialist—kept students on IEP tasks and class routines.
-- Covered transitions, materials, and duty spots so the specialist could keep teaching blocks uninterrupted.
+- Supported students in small-group and one-to-one settings under the education specialist.
+- Kept students on Individualized Education Program (IEP) tasks and class routines during lessons.
+- Protected learning time while the specialist moved between groups.
+- Covered transitions, materials, and duty spots so teaching blocks stayed uninterrupted.
 
-### Volunteer — Fifth-Grade Classroom & Special Education Support
+### Volunteer, Fifth-Grade Classroom & Special Education Support
 
 Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016
 
-- Fifth-grade volunteer during a career pivot: reinforced lessons and classroom routines beside the classroom teacher.
-- Ran a full-grade Revolutionary War walk-through—stations, materials, and student rotations across fifth grade.
-- Weekly fifth-grade reading checks plus SPED reading probes teams used to adjust interventions.
+- Volunteered in fifth grade during a career pivot, reinforcing lessons and routines beside the classroom teacher.
+- Ran a full-grade Revolutionary War walk-through with stations, materials, and rotations, keeping each class on schedule.
+- Delivered weekly fifth-grade and special education reading probes so teams could adjust interventions from current data.
 
 ### Junior High English Teacher
 
 Mission Hills Christian School, Junior High · Rancho Santa Margarita, CA · June 2008–June 2013
 
-- Junior high English building-wide; rewrote pacing and texts when the core left students stuck or disengaged.
-- Teamed with the school psychologist on cross-grade behavior and learning plans for complex students.
-- Coached speech, spelling, and creative writing teams for regional ACSI competitions.
-- Reluctant reader (privacy-safe): two years from avoidance to engagement; later picked novel electives in high school.
+- Led junior high English building-wide and rewrote pacing and texts when the core curriculum left students stuck.
+- Opened grade-level work to more learners with less frustration.
+- Partnered with the school psychologist on cross-grade behavior and learning plans for complex students, matching support plans to classroom evidence.
+- Coached speech, spelling, and creative writing teams for regional ACSI competitions, preparing students with stronger pieces and confidence.
+- Supported a reluctant reader from avoidance to engagement across two years (privacy-safe).
+- Guided that same student toward high-school novel electives as confidence grew (privacy-safe).
 
 ### Elementary Teacher (grades 1–6); Master Teacher (fifth grade)
 
 Chino Unified School District, Anna Borba Elementary · Chino, CA · August 1994–June 2008
 
-- Elementary grades 1–6, including a 1/2 combo; fifth-grade Master Teacher/GLC beside the resource specialist.
-- RTI team; West End SELPA academic/behavior team; trained Conflict Managers schoolwide.
-- Science fair lead; SSC; textbook adoption; PQR training; Chino PD DARE partner; IB Early Years certified.
-- Two tough students (privacy-safe): daily check-ins, clear expectations, families re-engaged—both later called it formative.
+- Taught elementary grades 1–6, including a 1/2 combination.
+- Served as fifth-grade Master Teacher/GLC beside the resource specialist.
+- Served on the RTI team and the West End SELPA academic/behavior team.
+- Trained Conflict Managers schoolwide.
+- Led science fair programming.
+- Served on School Site Council (SSC).
+- Supported textbook adoption committees.
+- Earned IB Early Years certification.
+- Co-taught DARE with Chino PD as a classroom partner.
+- Supported two high-need students through daily check-ins and clear expectations until families re-engaged with school (privacy-safe).
+- Received feedback years later from both students that the steady support was formative to their stability (privacy-safe).
 
 ### Sixth Grade Teacher
 
 Chino Unified School District, Glenmeade Elementary · Chino Hills, CA · October 1991–August 1994
 
-- Taught sixth grade daily, wrote curriculum supplements, and ran interventions for students below benchmark.
-- Science fair coordinator; co-taught DARE with Chino PD.
+- Taught sixth grade daily and wrote curriculum supplements for the team.
+- Ran interventions for students below benchmark.
+- Coordinated the science fair.
+- Co-taught DARE with Chino PD.
 
 ## Education
 

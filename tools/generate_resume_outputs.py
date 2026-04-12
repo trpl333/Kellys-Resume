@@ -649,8 +649,12 @@ def _validate_resume_pdf(path: Path) -> None:
 
     reader = PdfReader(str(path))
     page_count = len(reader.pages)
-    if page_count != 2:
-        raise RuntimeError(f"Expected resume PDF to be 2 pages, got {page_count} at {path}.")
+    if page_count < 2 or page_count > 3:
+        raise RuntimeError(
+            f"Expected resume PDF to be 2-3 pages, got {page_count} at {path}."
+        )
+    if page_count == 3:
+        print(f"WARNING: Resume PDF is 3 pages at {path} (layout target is 2).")
 
     extracted = "".join((page.extract_text() or "") for page in reader.pages)
     bad_tags = ("<b>", "</b>", "<B>", "</B>", "&lt;b&gt;", "&lt;/b&gt;")

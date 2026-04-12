@@ -2,6 +2,7 @@ import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import EducationBlock from "./components/EducationBlock";
+import { resumePdfHref } from "@/lib/resumePdfHref";
 import resume from "@data/kelly_resume_source.json";
 
 const summaryParagraphs = resume.summary as string[];
@@ -33,7 +34,7 @@ export default function ResumePage() {
           {/* Download Button */}
           <div className="flex justify-end mb-12">
             <a
-              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              href={resumePdfHref()}
               download="Kelly_Peterson_resume.pdf"
               className="flex items-center gap-2 px-6 py-3 border border-[#1E3A5F] text-[#1E3A5F] rounded-full text-sm font-medium hover:bg-[#1E3A5F] hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer"
             >
