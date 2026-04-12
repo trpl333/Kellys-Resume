@@ -4,7 +4,6 @@ import Footer from "@/components/feature/Footer";
 
 const CONTACT_EMAIL = "kellykaypeterson@gmail.com";
 const PHONE_DISPLAY = "949-556-5378";
-const PHONE_TEL = "+19495565378";
 
 function contactApiUrl(): string {
   const base = import.meta.env.BASE_URL.endsWith("/")
@@ -99,15 +98,19 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {/* Phone — tel only */}
+            {/* Phone — display only (no tel: link) so the OS does not show “Pick an app?” */}
             <div className="order-1 relative flex flex-col rounded-2xl border-2 border-[#1E3A5F]/22 bg-gradient-to-b from-[#FAF8F5] to-[#F0EBE4] p-8 md:p-9 shadow-[0_8px_32px_-14px_rgba(30,58,95,0.16)] ring-1 ring-[#1E3A5F]/[0.08] transition-shadow duration-300 hover:shadow-[0_10px_36px_-12px_rgba(30,58,95,0.2)] lg:order-2">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#1E3A5F]/[0.12] text-[#1E3A5F]">
                 <i className="ri-phone-line text-xl" aria-hidden />
               </div>
               <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1E3A5F] mb-2">Call Kelly</h2>
-              <a href={`tel:${PHONE_TEL}`} className="text-lg font-semibold text-[#2D2D2D] hover:text-[#1E3A5F] transition-colors">
+              <p
+                className="text-lg font-semibold text-[#2D2D2D] select-text cursor-text"
+                translate="no"
+                title="Dial this number from your phone"
+              >
                 {PHONE_DISPLAY}
-              </a>
+              </p>
               <p className="mt-4 text-sm font-medium text-[#4a4a4a] leading-relaxed">Most people start here.</p>
             </div>
 
