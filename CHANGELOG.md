@@ -39,7 +39,7 @@ Story content on the website and resume is therefore aligned to the **portfolio 
 - **Reluctant reader story** appears under **Mission Hills** experience, in **Signature Impact**, and as a STAR card on the website.
 - **Two-student / high-need partnership story** appears under **Chino USD (Anna Borba)** experience, in **Signature Impact**, and as a STAR card on the website (privacy-safe wording only).
 - **Riley Elementary volunteer** dates are recorded as **Jun 2013 – Mar 2016** per confirmed placement timeline for this package.
-- **Email** is flagged **[NEEDS CONFIRMATION]** throughout until you provide a confirmed address.
+- **Contact:** Resume data and site use **kellykaypeterson@gmail.com** with phone **949-556-5378** (dashed format) and display line `Mission Viejo, CA | phone | email` where applicable.
 
 ## QA checks performed
 

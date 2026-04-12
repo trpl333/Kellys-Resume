@@ -15,11 +15,11 @@ export default function SignatureImpact() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
           {bullets.map((bullet, i) => (
             <div key={i} className="flex items-start gap-4">
               <div className="mt-2 w-2 h-2 rounded-full bg-[#1E3A5F] flex-shrink-0"></div>
-              <p className="text-base text-[#3D3D3D] leading-relaxed font-['Inter']">{bullet}</p>
+              <p className="min-w-0 text-base text-[#3D3D3D] leading-relaxed font-['Inter'] text-pretty">{bullet}</p>
             </div>
           ))}
         </div>

@@ -13,7 +13,7 @@ export default function EducationBlock() {
         Education
       </h2>
 
-      <div className="bg-[#EEEDE9] rounded-2xl p-8 md:p-10 mb-12">
+      <div className="bg-[#EEEDE9] rounded-2xl p-8 md:p-10 mb-14">
         <div className="flex flex-col gap-8">
           {education.map((edu, i) => (
             <div key={i} className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">

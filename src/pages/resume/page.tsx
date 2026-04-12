@@ -2,6 +2,9 @@ import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import EducationBlock from "./components/EducationBlock";
+import resume from "@data/kelly_resume_source.json";
+
+const summaryParagraphs = resume.summary as string[];
 
 export default function ResumePage() {
   return (
@@ -17,8 +20,8 @@ export default function ResumePage() {
           <h1 className="font-['Crimson_Pro'] text-5xl md:text-6xl font-bold text-white mb-4">
             Resume
           </h1>
-          <p className="text-base text-white/65 font-['Inter']">
-            26+ years TK–8 Special Education · Inclusion · RSP · SDC
+          <p className="text-base text-white/65 font-['Inter'] text-pretty max-w-2xl mx-auto">
+            26+ years TK–8 special education in inclusion, Special Day Class (SDC), and Resource Specialist Program (RSP)
           </p>
         </div>
       </section>
@@ -44,10 +47,17 @@ export default function ResumePage() {
               Kelly Peterson
             </h2>
             <p className="text-sm text-gray-500 mb-1">Education Specialist (Special Education)</p>
-            <p className="text-sm text-gray-500 mb-6">Mission Viejo, CA · kellykaypeterson@gmail.com</p>
-            <p className="text-sm text-[#4A4A4A] leading-relaxed">
-              Education Specialist with 26+ years of TK–8 experience across public and private schools. Expertise in Inclusion, RSP, and SDC delivery models. Skilled in IEP development, MTSS frameworks, UDL instructional design, and CalTPA-aligned credential supervision. Currently serving as Education Specialist at Orange Unified School District (Olive Elementary) and Field Supervisor at Chapman University.
+            <p className="text-sm text-gray-500 mb-6">
+              Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
             </p>
+            {summaryParagraphs.map((paragraph, i) => (
+              <p
+                key={i}
+                className={`text-sm text-[#4A4A4A] leading-relaxed ${i < summaryParagraphs.length - 1 ? "mb-4" : ""}`}
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <ExperienceTimeline />

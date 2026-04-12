@@ -16,7 +16,7 @@ const roles = resume.experience as Role[];
 const experiences = roles.map((role) => {
   let org = role.employer;
   if (role.school_site) {
-    org = `${role.employer} — ${role.school_site}`;
+    org = `${role.employer} · ${role.school_site}`;
   }
   if (role.employment_note) {
     org += ` (${role.employment_note})`;
@@ -40,7 +40,7 @@ export default function ExperienceTimeline() {
         {/* Vertical line */}
         <div className="absolute left-[140px] top-0 bottom-0 w-px bg-[#E8E8E6] hidden md:block"></div>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-14">
           {experiences.map((exp, i) => (
             <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-0">
               {/* Date */}
@@ -61,11 +61,11 @@ export default function ExperienceTimeline() {
                   {exp.title}
                 </h3>
                 <p className="text-sm text-gray-500 mb-4 font-['Inter']">{exp.org}</p>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-2.5">
                   {exp.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1E3A5F]/40 flex-shrink-0"></div>
-                      <p className="text-sm text-[#4A4A4A] leading-relaxed font-['Inter']">{b}</p>
+                      <p className="min-w-0 text-sm text-[#4A4A4A] leading-relaxed font-['Inter'] text-pretty">{b}</p>
                     </li>
                   ))}
                 </ul>

@@ -5,7 +5,7 @@
 ## Header
 
 - **Kelly Peterson**
-- Mission Viejo, CA 92692 · 949.556.5378 · [NEEDS CONFIRMATION: email]
+- Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
 
 ## Summary
 
@@ -113,6 +113,6 @@ Chino Unified School District, Glenmeade Elementary · Chino Hills, CA · Octobe
 
 ## References (available upon request)
 
-- **Susan Greenwald** — Inclusion Specialist, Rancho Santa Margarita Intermediate, Saddleback Valley USD; bajorekj@svusd.org; 949.677.3059
-- **Dr. Trisha Sugita** — Program Coordinator, Special Education; Assistant Dean of Educational Studies, Chapman University; nishimur@chapman.edu; 714.875.2458
-- **Dr. Rachel Lambert** — Associate Professor, College of Educational Studies, Chapman University; lambertr@chapman.edu; 714.997.6781
+- **Susan Greenwald** — Inclusion Specialist, Rancho Santa Margarita Intermediate, Saddleback Valley USD; bajorekj@svusd.org; 949-677-3059
+- **Dr. Trisha Sugita** — Program Coordinator, Special Education; Assistant Dean of Educational Studies, Chapman University; nishimur@chapman.edu; 714-875-2458
+- **Dr. Rachel Lambert** — Associate Professor, College of Educational Studies, Chapman University; lambertr@chapman.edu; 714-997-6781

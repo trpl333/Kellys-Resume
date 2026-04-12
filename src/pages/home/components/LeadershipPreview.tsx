@@ -10,9 +10,22 @@ export default function LeadershipPreview() {
         <h2 className="font-['Crimson_Pro'] text-4xl md:text-5xl font-bold text-white mb-8">
           Leadership &amp; Mentorship
         </h2>
-        <p className="text-base md:text-lg text-white/75 leading-relaxed max-w-3xl mx-auto mb-12 font-['Inter'] font-light">
-          As a Chapman University Field Supervisor since 2020, Kelly observes, coaches, and formally evaluates credential candidates — providing formative and summative assessments aligned to all 13 Teaching Performance Expectations (TPEs) and the CalTPA. She delivers program-level approval and non-approval readiness recommendations, directly shaping the next generation of educators. Her committee work spans RTI, SELPA behavior teams, district curriculum adoption, School Site Council, and Science Fair coordination.
-        </p>
+        <div className="text-base md:text-lg text-white/75 leading-relaxed max-w-3xl mx-auto mb-12 font-['Inter'] font-light space-y-5">
+          <p>
+            As a Chapman University Field Supervisor since 2020, Kelly observes, coaches, and formally evaluates credential candidates, using formative
+            and summative evidence tied to all 13 Teaching Performance Expectations (TPEs).
+          </p>
+          <p>
+            That work includes readiness for the California Teaching Performance Assessment (CalTPA), with program-level approval and non-approval
+            recommendations that shape the next generation of educators.
+          </p>
+          <p>
+            Committee service has included Response to Intervention (RTI) teaming and Special Education Local Plan Area (SELPA) behavior teams.
+          </p>
+          <p>
+            She has also supported district curriculum adoption, School Site Council (SSC), and Science Fair coordination.
+          </p>
+        </div>
         <Link
           to={{ pathname: "/", hash: "leadership" }}
           className="inline-flex min-h-11 items-center justify-center px-8 py-3.5 border-2 border-white text-white rounded-full text-sm font-semibold hover:bg-white hover:text-[#1E3A5F] transition-all duration-200 text-center cursor-pointer"

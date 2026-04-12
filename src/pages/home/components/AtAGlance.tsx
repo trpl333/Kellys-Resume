@@ -9,13 +9,13 @@ const tiles = [
     icon: "ri-group-line",
     number: "3",
     title: "Inclusion · RSP · SDC",
-    sub: "Full spectrum SPED delivery",
+    sub: "Resource Specialist Program (RSP), Special Day Class (SDC), and general-ed inclusion",
   },
   {
     icon: "ri-award-line",
     number: "Field",
     title: "Chapman Supervisor",
-    sub: "Credential evaluator & CalTPA coach",
+    sub: "Credential evaluation aligned to the California Teaching Performance Assessment (CalTPA)",
   },
   {
     icon: "ri-graduation-cap-line",

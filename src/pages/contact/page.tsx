@@ -3,7 +3,7 @@ import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 
 const CONTACT_EMAIL = "kellykaypeterson@gmail.com";
-const PHONE_DISPLAY = "949.556.5378";
+const PHONE_DISPLAY = "949-556-5378";
 const PHONE_TEL = "+19495565378";
 
 export default function ContactPage() {

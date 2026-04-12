@@ -14,7 +14,7 @@ export default function FinalCTA() {
           Contact Kelly
         </Link>
         <p className="mt-6 text-sm text-gray-400 font-['Inter']">
-          kellykaypeterson@gmail.com · Mission Viejo, CA
+          Mission Viejo, CA | 949-556-5378 | kellykaypeterson@gmail.com
         </p>
       </div>
     </section>

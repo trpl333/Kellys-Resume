@@ -92,7 +92,7 @@ def write_kelly_resume_markdown(data: dict[str, Any], path: Path, label: str) ->
         "## Header",
         "",
         f"- **{name}**",
-        f"- {c['city_state_zip']} · {c['phone']} · {c['email']}",
+        f"- {c['city_state_zip']} | {c['phone']} | {c['email']}",
         "",
         "## Summary",
         "",
@@ -378,7 +378,7 @@ def build_executive_snapshot_docx(data: dict[str, Any], path: Path) -> None:
     add_heading(document, "Headline")
     headline = (
         "Special education teacher and Chapman University field supervisor with 26+ years across "
-        "SDC, RSP/Inclusion, and general education (TK–8)."
+        "Special Day Class (SDC), Resource Specialist Program (RSP)/Inclusion, and general education (TK–8)."
     )
     p2 = document.add_paragraph(headline)
     for run in p2.runs:
@@ -595,7 +595,7 @@ def build_executive_snapshot_pdf(data: dict[str, Any], path: Path) -> None:
         Paragraph(
             _text_for_output(
                 "Special education teacher and Chapman University field supervisor with 26+ years across "
-                "SDC, RSP/Inclusion, and general education (TK–8)."
+                "Special Day Class (SDC), Resource Specialist Program (RSP)/Inclusion, and general education (TK–8)."
             ),
             styles["body"],
         )

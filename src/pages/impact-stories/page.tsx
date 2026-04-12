@@ -25,12 +25,12 @@ const sortedStories = [...impactList].sort(
   (a, b) => storyOrder.indexOf(a.id) - storyOrder.indexOf(b.id),
 );
 
-/** One-line transformation hooks — contrast first, privacy-safe. */
+/** One-line transformation hooks: contrast first, privacy-safe. */
 const IMPACT_HOOKS: Record<string, string> = {
   "mission-hills-literacy":
-    "A student who refused to read… chose novels two years later—and said this stretch was when they were willing to try.",
+    "A student who refused to read… chose novels two years later, and said this stretch was when they were willing to try.",
   "chino-partnership":
-    "Two students the school had nearly written off… re-engaged—and brought their families back with them.",
+    "Two students the school had nearly written off… re-engaged, then brought their families back with them.",
 };
 
 function combineWhatKellyDid(task: string, action: string): string {
@@ -100,7 +100,7 @@ export default function ImpactStoriesPage() {
       <section className="bg-white py-12 border-t border-[#E8E0D0]/60">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <p className="text-sm text-gray-500 font-['Inter'] leading-relaxed">
-            No fabricated metrics. Stories use portfolio-aligned, privacy-safe language—no names or disability labels.
+            No fabricated metrics. Stories use portfolio-aligned, privacy-safe language, with no names or disability labels.
           </p>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default function ImpactStoriesPage() {
             What happens in these stories can happen in your program.
           </h2>
           <p className="text-sm md:text-base text-white/85 font-['Inter'] leading-relaxed mb-9">
-            Kelly builds trust, structure, and momentum that lasts—for students and the adults supporting them.
+            Kelly builds trust, structure, and momentum that lasts for students and the adults supporting them.
           </p>
           <Link
             to="/contact"

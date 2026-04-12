@@ -5,7 +5,7 @@ const stories = [
     tag: "Literacy & confidence",
     title: "Reluctant reader to engaged learner",
     summary:
-      "Two years of low-pressure, interest-led work—avoidance eased into steady reading. Later chose high-school novel electives and named this stretch the turning point.",
+      "Two years of low-pressure, interest-led work; avoidance eased into steady reading. Later chose high-school novel electives and named this stretch the turning point.",
     link: "/impact-stories",
   },
   {
@@ -30,7 +30,7 @@ export default function ImpactPreview() {
               Impact Stories
             </h2>
             <p className="text-sm text-gray-500 mt-3 font-['Inter'] max-w-md">
-              Privacy-safe snapshots—no names or labels. Read the full narratives on Impact Stories.
+              Privacy-safe snapshots with no names or labels. Read the full narratives on Impact Stories.
             </p>
           </div>
           <Link

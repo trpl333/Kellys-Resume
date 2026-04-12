@@ -75,7 +75,9 @@ export default function HeroSection() {
             Education Specialist (Special Education)
           </p>
           <p className="text-base md:text-lg text-white/85 leading-relaxed mb-10 max-w-xl font-['Inter'] font-light drop-shadow-sm">
-            26+ years TK–8. Inclusion · RSP · SDC. IEP-aligned instruction, MTSS/UDL supports, and trust-centered mentorship that changes outcomes.
+            26+ years TK–8 in inclusion, Special Day Class (SDC), and Resource Specialist Program (RSP) settings. Instruction stays aligned to each
+            student&apos;s Individualized Education Program (IEP). Supports draw on Multi-Tiered System of Supports (MTSS) and Universal Design for
+            Learning (UDL), with trust-centered mentorship that changes outcomes.
           </p>
 
           {/* CTA row: frosted panel for contrast on variable slides */}
