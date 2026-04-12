@@ -19,7 +19,7 @@ from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +46,8 @@ QUICK_BULLET_SPACE_AFTER_PT = 2
 QUICK_ROLE_SPACE_BEFORE_PT = 4
 QUICK_SECTION_HEADING_BEFORE_PT = 6
 QUICK_PAGE_MARGIN_INCH = 0.72
+# Horizontal gap between two columns in Quick Resume tables (points).
+QUICK_TABLE_COL_GUTTER_PT = 14
 
 
 def _core_competency_lines(items: list[str], *, max_lines: int = 2) -> list[str]:
@@ -319,6 +321,25 @@ def _rl_education_degree_block_markup(edu: dict[str, Any]) -> str:
     loc = _escape(_strip_markup_tags(f"{edu['school']}, {edu['location']}"))
     dt = _escape(_strip_markup_tags(edu["date"]))
     return f"<b>{deg}</b><br/>{loc}<br/>{dt}"
+
+
+def _quick_pdf_usable_width_pt() -> float:
+    """Content width inside Quick Resume margins (points)."""
+    return float(LETTER[0]) - 2 * QUICK_PAGE_MARGIN_INCH * 72
+
+
+def _quick_education_cell_markup(edu: dict[str, Any]) -> str:
+    """Single-line education cell: bold degree | school, city | date (Quick PDF tables)."""
+    deg = _escape(_strip_markup_tags(edu["degree"]))
+    loc = _escape(_strip_markup_tags(f"{edu['school']}, {edu['location']}"))
+    dt = _escape(_strip_markup_tags(edu["date"]))
+    return f"<b>{deg}</b> | {loc} | {dt}"
+
+
+def _quick_cert_cell_markup(name: str, date: str) -> str:
+    nm = _escape(_strip_markup_tags(name))
+    dt = _escape(_strip_markup_tags(date))
+    return f"<b>{nm}</b> — {dt}"
 
 
 def build_resume_full_docx(data: dict[str, Any], path: Path) -> None:
@@ -615,11 +636,94 @@ def _rl_styles_quick() -> dict[str, ParagraphStyle]:
         alignment=TA_LEFT,
         spaceAfter=QUICK_BULLET_SPACE_AFTER_PT,
     )
+    # Table cells: left-aligned body, no hanging indent (Quick PDF only).
+    styles["quick_table_cell"] = ParagraphStyle(
+        "quick_table_cell",
+        parent=base["Normal"],
+        fontName="Helvetica",
+        fontSize=fs,
+        leading=leading + 0.25,
+        alignment=TA_LEFT,
+        leftIndent=0,
+        rightIndent=0,
+        spaceBefore=0,
+        spaceAfter=2,
+    )
     return styles
 
 
 def _rl_bullet_paragraph(text: str, style: ParagraphStyle) -> Paragraph:
     return Paragraph(_text_for_output(text), style, bulletText="\u2022")
+
+
+def _quick_two_column_table_style() -> TableStyle:
+    """Minimal padding; no grid lines. Gutter between columns via asymmetric padding."""
+    g = QUICK_TABLE_COL_GUTTER_PT
+    return TableStyle(
+        [
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 0),
+            ("RIGHTPADDING", (0, 0), (0, -1), g / 2),
+            ("LEFTPADDING", (1, 0), (1, -1), g / 2),
+            ("RIGHTPADDING", (1, 0), (1, -1), 0),
+            ("TOPPADDING", (0, 0), (-1, -1), 0),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ]
+    )
+
+
+def _append_quick_certifications_two_column(
+    story: list[Any], styles: dict[str, ParagraphStyle], certifications: list[dict[str, Any]]
+) -> None:
+    """
+    Two-column cert grid: row 1 = both Clear credentials; row 2 = CLAD + IB PYP.
+    Left-aligned cells; improves scan without merging with Education.
+    """
+    cell_st = styles["quick_table_cell"]
+    w_use = _quick_pdf_usable_width_pt()
+    gutter = QUICK_TABLE_COL_GUTTER_PT
+    col_w = (w_use - gutter) / 2
+    rows: list[list[Any]] = []
+    for i in range(0, len(certifications), 2):
+        left = Paragraph(
+            _quick_cert_cell_markup(certifications[i]["name"], certifications[i]["date"]),
+            cell_st,
+        )
+        if i + 1 < len(certifications):
+            right = Paragraph(
+                _quick_cert_cell_markup(certifications[i + 1]["name"], certifications[i + 1]["date"]),
+                cell_st,
+            )
+        else:
+            right = Paragraph("", cell_st)
+        rows.append([left, right])
+    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="LEFT")
+    tbl.setStyle(_quick_two_column_table_style())
+    story.append(tbl)
+
+
+def _append_quick_education_two_column(
+    story: list[Any], styles: dict[str, ParagraphStyle], edu_rows: list[dict[str, Any]]
+) -> None:
+    """
+    Two-column education grid: pair degrees per row; single line per cell
+    (bold degree | school, location | date). Body text left-aligned only.
+    """
+    cell_st = styles["quick_table_cell"]
+    w_use = _quick_pdf_usable_width_pt()
+    gutter = QUICK_TABLE_COL_GUTTER_PT
+    col_w = (w_use - gutter) / 2
+    rows: list[list[Any]] = []
+    for i in range(0, len(edu_rows), 2):
+        left = Paragraph(_quick_education_cell_markup(edu_rows[i]), cell_st)
+        if i + 1 < len(edu_rows):
+            right = Paragraph(_quick_education_cell_markup(edu_rows[i + 1]), cell_st)
+        else:
+            right = Paragraph("", cell_st)
+        rows.append([left, right])
+    tbl = Table(rows, colWidths=[col_w, col_w], hAlign="LEFT")
+    tbl.setStyle(_quick_two_column_table_style())
+    story.append(tbl)
 
 
 def build_resume_full_pdf(data: dict[str, Any], path: Path) -> None:
@@ -717,8 +821,8 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
         story.append(Paragraph(_text_for_output(line), styles["body"]))
 
     story.append(Paragraph(_escape("CERTIFICATIONS & CREDENTIALS"), styles["h1"]))
-    for item in data["certifications"]:
-        story.append(_rl_bullet_paragraph(f"{item['name']} — {item['date']}", styles["bullet"]))
+    story.append(Spacer(1, 1))
+    _append_quick_certifications_two_column(story, styles, data["certifications"])
 
     story.append(Paragraph(_escape("SIGNATURE IMPACT"), styles["h1"]))
     for b in data["signature_impact"][:RESUME_SIGNATURE_RENDER_LIMIT]:
@@ -740,11 +844,8 @@ def build_resume_quick_pdf(data: dict[str, Any], path: Path) -> None:
             story.append(_rl_bullet_paragraph(b, styles["bullet"]))
 
     story.append(Paragraph(_escape("EDUCATION"), styles["h1"]))
-    edu_rows = data["education"]
-    for i, edu in enumerate(edu_rows):
-        blk = _rl_education_degree_block_markup(edu)
-        estyle = styles["edu_block"] if i < len(edu_rows) - 1 else styles["edu_date_last"]
-        story.append(Paragraph(blk, estyle))
+    story.append(Spacer(1, 2))
+    _append_quick_education_two_column(story, styles, data["education"])
 
     story.append(Spacer(1, 0.02 * inch))
 
