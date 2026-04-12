@@ -84,7 +84,7 @@ export default defineConfig({
     port: 3000,
     host: "0.0.0.0",
     proxy: {
-      // Local dev: POST /api/contact -> scripts/contact-dev-server.mjs (SendGrid + Twilio)
+      // Local dev: POST /api/contact -> scripts/contact-dev-server.mjs (Resend + Twilio)
       "/api/contact": {
         target: "http://127.0.0.1:8788",
         changeOrigin: true,
