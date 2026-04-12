@@ -26,7 +26,8 @@ Chapman Field Supervisor: CalTPA and 13-TPE observations in schools, then comple
 
 ## Core Competencies
 
-SDC & RSP/Inclusion; IEP development & compliance; MTSS/RTI teaming; UDL-informed instruction; Progress monitoring & assessment; Family partnership; Paraprofessional leadership; Formal observation & written evaluation (13 TPEs); CalTPA-aligned coaching; Site & district committees
+SDC & RSP/Inclusion · IEP development & compliance · MTSS/RTI teaming · UDL-informed instruction · Progress monitoring & assessment
+Family partnership · Paraprofessional leadership · Formal observation & written evaluation (13 TPEs) · CalTPA-aligned coaching · Site & district committees
 
 ## Certifications & Credentials
 
@@ -46,7 +47,6 @@ Orange Unified School District, Olive Elementary · Orange, CA · August 2017–
 - Co-teaches with gen-ed teachers so inclusion minutes happen in actual lessons, not on paper only.
 - Keeps families in the loop on goals, behavior plans, and IEP dates before meetings, not after surprises.
 - Trains paras on transitions and classroom routines so students land ready to learn in each block.
-- Attends assessments and district placement meetings when caseload students face change to services.
 
 ### Field Supervisor, Special Education & Multiple Subject Credential Candidates
 
