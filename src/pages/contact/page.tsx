@@ -23,6 +23,7 @@ export default function ContactPage() {
       `Reply-to email: ${safeEmail}`,
       "",
       "Message:",
+      "",
       safeMessage,
     ].join("\n");
     const subject = encodeURIComponent("Website contact form - Kelly Peterson");

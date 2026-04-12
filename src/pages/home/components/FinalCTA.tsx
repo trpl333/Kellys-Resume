@@ -4,7 +4,7 @@ export default function FinalCTA() {
   return (
     <section className="bg-white py-28 md:py-36">
       <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
-        <h2 className="font-['Crimson_Pro'] text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A5F] leading-tight mb-10">
+        <h2 className="font-['Crimson_Pro'] text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A5F] leading-tight mb-10 text-balance">
           Let&apos;s talk about supporting students and strengthening your team.
         </h2>
         <Link

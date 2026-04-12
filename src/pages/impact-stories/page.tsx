@@ -28,7 +28,7 @@ const sortedStories = [...impactList].sort(
 /** One-line transformation hooks — contrast first, privacy-safe. */
 const IMPACT_HOOKS: Record<string, string> = {
   "mission-hills-literacy":
-    "A student who refused to read… chose novels two years later—and said this stretch was the reason they'd try.",
+    "A student who refused to read… chose novels two years later—and said this stretch was when they were willing to try.",
   "chino-partnership":
     "Two students the school had nearly written off… re-engaged—and brought their families back with them.",
 };

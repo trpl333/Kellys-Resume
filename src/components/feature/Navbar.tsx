@@ -37,7 +37,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   const isHome = location.pathname === "/";
 

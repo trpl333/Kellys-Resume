@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function LeadershipPreview() {
   return (
-    <section id="leadership" className="scroll-mt-24 bg-[#1E3A5F] py-24 md:py-32">
+    <section id="leadership" className="scroll-mt-28 bg-[#1E3A5F] py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6 md:px-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50 mb-6">
           Beyond the Classroom
