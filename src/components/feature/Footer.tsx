@@ -41,12 +41,13 @@ export default function Footer() {
           <p className="text-xs text-gray-400">
             © {new Date().getFullYear()} Kelly Peterson. Resume and portfolio available upon request.
           </p>
-          <Link
-            to="/resume"
+          <a
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            download="Kelly_Peterson_resume.pdf"
             className="text-xs text-[#1E3A5F] hover:underline cursor-pointer whitespace-nowrap"
           >
             Download Resume →
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

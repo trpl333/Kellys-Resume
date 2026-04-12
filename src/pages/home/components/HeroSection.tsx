@@ -29,12 +29,13 @@ export default function HeroSection() {
             26+ years TK–8. Inclusion · RSP · SDC. IEP-aligned instruction, MTSS/UDL supports, and trust-centered mentorship that changes outcomes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              to="/resume"
+            <a
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              download="Kelly_Peterson_resume.pdf"
               className="px-8 py-4 bg-white text-[#1E3A5F] rounded-full text-sm font-semibold hover:bg-white/90 transition-all duration-200 text-center whitespace-nowrap cursor-pointer"
             >
               Download Resume
-            </Link>
+            </a>
             <Link
               to="/impact-stories"
               className="px-8 py-4 border-2 border-white text-white rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-200 text-center whitespace-nowrap cursor-pointer"
