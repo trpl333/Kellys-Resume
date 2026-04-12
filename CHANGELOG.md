@@ -7,6 +7,7 @@
 - **`public/resume.pdf`**: copied from generator output for site download (`/resume.pdf` with Vite `BASE_URL`).
 - **`tools/generate_resume_outputs.py`**: writes markdown + PDF/DOCX under `outputs/` and publishes `public/resume.pdf` **inside this repo only** (no external app folder sync).
 - **Site**: `SignatureImpact`, `ExperienceTimeline`, and `EducationBlock` now read from `@data/kelly_resume_source.json`; resume page PDF download points at `resume.pdf`; Orange **Unified** (not Oakland) called out explicitly.
+- **Impact stories** page now renders `impact_stories[].star_web` from the same JSON (privacy-safe; no fabricated metrics or “cousins” identifiers).
 
 ---
 

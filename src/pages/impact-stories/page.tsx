@@ -1,43 +1,37 @@
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import StoryCard from "./components/StoryCard";
+import resume from "@data/kelly_resume_source.json";
 
-const stories = [
-  {
-    tag: "Literacy & Confidence",
-    title: "Reluctant Reader to Confident Learner",
-    situation:
-      "A student arrived with deep reluctance around reading — avoidance behaviors, low stamina, and visible anxiety whenever text was introduced. Prior interventions had focused heavily on decoding drills, which had eroded the student's confidence rather than building it.",
-    task:
-      "Kelly needed to rebuild this student's relationship with reading from the ground up — addressing both the skill gaps and the emotional barriers that had accumulated over years of struggle.",
-    action:
-      "Over two years, Kelly designed a low-pressure, interest-driven reading environment. She selected texts aligned to the student's genuine interests, used incremental success checkpoints to build stamina, and consistently reframed reading as exploration rather than performance. She maintained close communication with the family and coordinated with the general education teacher to ensure consistency across settings.",
-    result:
-      "By the end of the second year, the student's confidence had measurably shifted — both in observable behavior and in self-reported attitude toward reading. Years later, that same student chose novel-study electives and credited Kelly's approach as the turning point in their relationship with books.",
-    demonstrates: [
-      "Long-view instructional thinking: willingness to prioritize confidence-building over short-term metric gains",
-      "Skill in diagnosing and addressing the emotional dimensions of learning differences",
-      "Ability to sustain meaningful progress over multi-year relationships with students",
-    ],
-  },
-  {
-    tag: "Mentorship & Trust",
-    title: "Trust Built with High-Needs Learners",
-    situation:
-      "Two cousins, both high-risk, arrived with significant barriers to engagement — academic, social, and basic-needs related. Both had histories of inconsistent adult support and were resistant to school-based relationships.",
-    task:
-      "Kelly's task was not simply instructional — it was relational. Before any academic progress could happen, trust had to be established with students who had learned not to trust the adults around them.",
-    action:
-      "Kelly showed up consistently, kept her word, and extended support beyond the classroom when basic needs were unmet. She communicated honestly with both students, advocated for resources, and maintained a steady, non-judgmental presence over an extended period. She also worked to coordinate with family members and community supports to create a wider net of stability.",
-    result:
-      "The mentorship relationship created a foundation of stability that neither student had previously experienced in a school setting. Both cousins showed long-term positive outcomes years after their time with Kelly — a result that speaks to the durability of trust-centered, relationship-first support.",
-    demonstrates: [
-      "Capacity to build genuine trust with students who have experienced repeated adult inconsistency",
-      "Understanding that basic-needs support and relationship-building are prerequisites to academic engagement",
-      "Long-term impact orientation: outcomes that extend well beyond the classroom and the school year",
-    ],
-  },
-];
+type StarWeb = {
+  situation: string;
+  task: string;
+  action: string;
+  result: string;
+};
+
+type ImpactStory = {
+  id: string;
+  title: string;
+  district: string;
+  site: string;
+  star_web: StarWeb;
+};
+
+const impactList = resume.impact_stories as ImpactStory[];
+const storyOrder = ["mission-hills-literacy", "chino-partnership"];
+const sortedStories = [...impactList].sort(
+  (a, b) => storyOrder.indexOf(a.id) - storyOrder.indexOf(b.id),
+);
+
+const stories = sortedStories.map((s) => ({
+  tag: `${s.district} · ${s.site}`,
+  title: s.title,
+  situation: s.star_web.situation,
+  task: s.star_web.task,
+  action: s.star_web.action,
+  result: s.star_web.result,
+}));
 
 export default function ImpactStoriesPage() {
   return (
@@ -54,7 +48,8 @@ export default function ImpactStoriesPage() {
             Impact Stories
           </h1>
           <p className="text-base text-gray-500 max-w-xl mx-auto leading-relaxed font-['Inter']">
-            Privacy-safe summaries demonstrating instructional impact and relationship-building. No student names, disability identifiers, or confidential details are included.
+            STAR summaries from the same source as the resume JSON. No student names, disability identifiers, or
+            confidential details.
           </p>
         </div>
       </section>
@@ -64,7 +59,7 @@ export default function ImpactStoriesPage() {
         <div className="max-w-5xl mx-auto px-6 md:px-10 flex items-center gap-3">
           <i className="ri-shield-check-line text-[#1E3A5F] text-base"></i>
           <p className="text-sm text-[#1E3A5F] font-['Inter']">
-            Details shared with respect for student privacy. All stories are anonymized and privacy-safe.
+            Content is synced to <code className="rounded bg-white/60 px-1">data/kelly_resume_source.json</code>.
           </p>
         </div>
       </div>
@@ -82,7 +77,7 @@ export default function ImpactStoriesPage() {
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <p className="text-sm italic text-gray-400 font-['Inter']">
-            All details shared with respect for student privacy. No names, disability identifiers, or confidential information included.
+            No fabricated metrics; wording follows portfolio-aligned, privacy-safe summaries.
           </p>
         </div>
       </section>

@@ -5,7 +5,7 @@ interface StoryCardProps {
   task: string;
   action: string;
   result: string;
-  demonstrates: string[];
+  demonstrates?: string[];
 }
 
 export default function StoryCard({
@@ -15,7 +15,7 @@ export default function StoryCard({
   task,
   action,
   result,
-  demonstrates,
+  demonstrates = [],
 }: StoryCardProps) {
   return (
     <article className="bg-white rounded-3xl border border-[#E8E8E6] p-8 md:p-14">
@@ -44,25 +44,26 @@ export default function StoryCard({
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="w-4/5 h-px bg-[#E8E8E6] mb-10"></div>
-
-      {/* What this demonstrates */}
-      <div>
-        <h3 className="text-base font-semibold text-[#1E3A5F] mb-5 font-['Inter']">
-          What this demonstrates
-        </h3>
-        <ul className="flex flex-col gap-3">
-          {demonstrates.map((point, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <i className="ri-checkbox-circle-line text-[#1E3A5F] text-base"></i>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed font-['Inter']">{point}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {demonstrates.length > 0 ? (
+        <>
+          <div className="w-4/5 h-px bg-[#E8E8E6] mb-10"></div>
+          <div>
+            <h3 className="text-base font-semibold text-[#1E3A5F] mb-5 font-['Inter']">
+              What this demonstrates
+            </h3>
+            <ul className="flex flex-col gap-3">
+              {demonstrates.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i className="ri-checkbox-circle-line text-[#1E3A5F] text-base"></i>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed font-['Inter']">{point}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : null}
     </article>
   );
 }
