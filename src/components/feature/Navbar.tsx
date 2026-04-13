@@ -103,14 +103,6 @@ export default function Navbar() {
           >
             Full Professional History
           </a>
-          {location.pathname !== "/contact" ? (
-            <Link
-              to="/contact"
-              className="inline-flex min-h-10 items-center justify-center px-4 py-2 rounded-full text-sm font-medium bg-[#1E3A5F] text-white hover:bg-[#162d4a] transition-all duration-200 whitespace-nowrap cursor-pointer"
-            >
-              Contact
-            </Link>
-          ) : null}
         </div>
 
         {/* Mobile Hamburger */}
@@ -156,14 +148,6 @@ export default function Navbar() {
             >
               Full Professional History
             </a>
-            {location.pathname !== "/contact" ? (
-              <Link
-                to="/contact"
-                className="inline-flex min-h-11 items-center justify-center px-4 py-3 rounded-full text-sm font-medium bg-[#1E3A5F] text-white text-center whitespace-nowrap cursor-pointer"
-              >
-                Contact
-              </Link>
-            ) : null}
           </div>
         </div>
       )}
