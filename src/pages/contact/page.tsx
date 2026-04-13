@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useLayoutEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
@@ -34,10 +34,14 @@ export default function ContactPage() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    if (location.hash !== "#contact-form") return;
-    const t = window.setTimeout(() => scrollToContactForm(false), 0);
-    return () => clearTimeout(t);
+  // SPA navigation does not reset scroll position; plain `/contact` must start at the top.
+  // Only `/contact#contact-form` should scroll to the form (e.g. footer / resume deep links).
+  useLayoutEffect(() => {
+    if (location.hash === "#contact-form") {
+      scrollToContactForm(false);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname, location.hash]);
 
   async function handleSubmit(e: FormEvent) {
