@@ -313,7 +313,8 @@ def _riley_volunteer_glance_line(data: dict[str, Any]) -> str:
                 f"{role['location']} | {role['start']} – {role['end']}"
             )
     return (
-        "Volunteer | Riley Elementary, Capistrano Unified School District | "
+        "Elementary Classroom & Special Education Support (Volunteer) | "
+        "Riley Elementary, Capistrano Unified School District | "
         "Capistrano Valley, CA | Jun 2013 – Mar 2016"
     )
 

@@ -76,11 +76,11 @@ Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate �
 - Protected learning time while the specialist moved between groups.
 - Covered transitions, materials, and duty spots so teaching blocks stayed uninterrupted.
 
-### Volunteer, Fifth-Grade Classroom & Special Education Support
+### Elementary Classroom & Special Education Support (Volunteer)
 
 Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016
 
-- Volunteered in fifth grade during a career pivot, reinforcing lessons and routines beside the classroom teacher.
+- Volunteer role during a transition back to district special education work while advancing graduate/credential preparation at Chapman.
 - Ran a full-grade Revolutionary War walk-through with stations, materials, and rotations, keeping each class on schedule.
 - Delivered weekly fifth-grade and special education reading probes so teams could adjust interventions from current data.
 
