@@ -9,7 +9,7 @@
 
 ## Summary
 
-TK–8 Special Education teacher with 26+ years of experience across Special Day Class (SDC) and Resource Specialist Program (RSP)/Inclusion settings. Known for aligning instruction with real-time classroom demands, IEP implementation, and measurable student progress. Serves as a Chapman University Field Supervisor, evaluating credential candidates using California Teaching Performance Assessment (CalTPA) and Teaching Performance Expectations (TPEs), including formal completion recommendations.
+Kelly Peterson is a senior TK-8 special educator who helps schools stabilize complex student-support needs so classrooms can keep learning moving. Across 26+ years in Special Day Class (SDC) and Resource Specialist Program (RSP)/Inclusion settings, she is brought in where service delivery, team alignment, and student trust need to tighten quickly. She also serves as a Chapman University Field Supervisor, evaluating credential candidates against CalTPA and the Teaching Performance Expectations (TPEs).
 
 ## Signature Impact
 
@@ -17,7 +17,7 @@ TK–8 Special Education teacher with 26+ years of experience across Special Day
 - Chapman Field Supervisor: Leads post-observation debriefs that connect lesson, management, and student data to specific TPE indicators. Candidates leave with concrete changes to apply the next day.
 - Orange Unified, Olive Elementary: Aligns Special Day Class (SDC) and Resource Specialist Program (RSP) inclusion services with live co-teaching and scheduled Individualized Education Program (IEP) minutes. Classroom practice matches the agreed service plan.
 - Orange Unified, Olive Elementary: Uses running lesson notes and district scores in IEP reviews. Services adjust when student performance changes, not only at annual paperwork cycles.
-- Mission Hills Junior High English: Guided a reader from avoidance through two years of growing engagement into high-school novel electives. The student later described this stretch as the point they became willing to try (privacy-safe).
+- Mission Hills Junior High English: A student moved from active reading avoidance to choosing high-school novel electives after two years of scaffolded wins. Years later, the student described that stretch as the turning point in being willing to try (privacy-safe).
 - Anna Borba Elementary: Restored two high-need students to sustained classwork with daily check-ins and clear expectations after chronic disengagement (privacy-safe).
 - Anna Borba Elementary: Brought caregivers back into school life after long absences. Years later, both students described the steady support as formative to their stability (privacy-safe).
 - Capistrano Unified, Riley Elementary (volunteer): Ran a grade-wide Revolutionary War station rotation with clear materials and timing. Every fifth-grade class participated without losing instructional minutes to logistics.
@@ -49,8 +49,8 @@ Orange Unified School District, Olive Elementary · Orange, CA · August 2017–
 
 - Leads a mild/moderate caseload in Resource Specialist Program (RSP) inclusion, with prior Special Day Class (SDC) experience across whole-group, small-group, and pull-out instruction.
 - Keeps scheduled service minutes aligned with the instruction students actually receive.
-- Tracks Multi-Tiered System of Supports (MTSS) and Response to Intervention (RTI) data to tighten or loosen scaffolds based on student response.
-- Aligns Universal Design for Learning (UDL) scaffolds so entry points stay clear when progress quickens or stalls.
+- Uses Multi-Tiered System of Supports (MTSS) and Response to Intervention (RTI) data to adjust scaffolds quickly as student needs shift.
+- Aligns Universal Design for Learning (UDL) scaffolds so students keep clear entry points when progress accelerates or stalls.
 - Co-teaches with general education teachers so inclusion minutes appear in live lessons, not only on compliance paperwork.
 - Communicates with families about goals, behavior plans, and Individualized Education Program (IEP) dates before meetings, keeping decisions predictable and informed.
 - Trains paraprofessionals on transitions and routines so students enter each instructional block ready to learn with fewer lost minutes.
@@ -65,7 +65,7 @@ Chapman University, College of Educational Studies (field supervision) · Orange
 - Conducts formal observations with pre- and post-conferences, and assigns evidence-based next steps for the following day.
 - Partners with mentors and program leads on paperwork, placement fit, and concerns while prioritizing confidentiality.
 - Joins program meetings where teams decide readiness for added classroom responsibility. Staffing changes follow documented performance, not informal opinion alone.
-- Submits completion recommendations, including non-approval when performance or documentation requires it. Recommendations match what teams observed in the field.
+- Submits completion recommendations, including non-approval when performance or documentation requires it, so decisions stay aligned with field evidence.
 
 ### Special Education Instructional Aide
 
@@ -76,13 +76,11 @@ Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate �
 - Protected learning time while the specialist moved between groups.
 - Covered transitions, materials, and duty spots so teaching blocks stayed uninterrupted.
 
-### Elementary Classroom & Special Education Support (Volunteer)
+### Elementary Classroom & Special Education Support
 
-Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016
+Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016 · *Volunteer role*
 
-- Volunteer role during a transition back to district special education work while advancing graduate/credential preparation at Chapman.
-- Ran a full-grade Revolutionary War walk-through with stations, materials, and rotations, keeping each class on schedule.
-- Delivered weekly fifth-grade and special education reading probes so teams could adjust interventions from current data.
+- During a transition back to district special education work while advancing graduate/credential preparation at Chapman, supported fifth-grade and special education classrooms with grade-wide instructional rotations and weekly reading probes used to adjust interventions.
 
 ### Junior High English Teacher
 

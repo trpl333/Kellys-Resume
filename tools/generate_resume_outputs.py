@@ -308,8 +308,11 @@ def build_header(document: Document, data: dict[str, Any]) -> None:
 def _riley_volunteer_glance_line(data: dict[str, Any]) -> str:
     for role in data["experience"]:
         if role.get("school_site") == "Riley Elementary":
+            title = role["title"]
+            if role.get("employment_note"):
+                title += f" ({role['employment_note']})"
             return (
-                f"{role['title']} | {role['employer']}, {role['school_site']} | "
+                f"{title} | {role['employer']}, {role['school_site']} | "
                 f"{role['location']} | {role['start']} – {role['end']}"
             )
     return (
