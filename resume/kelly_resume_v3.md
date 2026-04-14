@@ -67,7 +67,7 @@ Chapman University, College of Educational Studies (field supervision) · Orange
 - Joins program meetings where teams decide readiness for added classroom responsibility. Staffing changes follow documented performance, not informal opinion alone.
 - Submits completion recommendations, including non-approval when performance or documentation requires it, so decisions stay aligned with field evidence.
 
-### Special Education Instructional Aide
+### Special Education Paraprofessional
 
 Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate · Rancho Santa Margarita, CA · March 2016–June 2017
 
