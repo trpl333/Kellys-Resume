@@ -76,11 +76,11 @@ Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate �
 - Protected learning time while the specialist moved between groups.
 - Covered transitions, materials, and duty spots so teaching blocks stayed uninterrupted.
 
-### Elementary Classroom & Special Education Support
+### Graduate Study & Special Education Classroom Support
 
-Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016 · *Volunteer role*
+Capistrano Unified School District, Riley Elementary · Capistrano Valley, CA · June 2013–March 2016
 
-- During a transition back to district special education work while advancing graduate/credential preparation at Chapman, supported fifth-grade and special education classrooms with grade-wide instructional rotations and weekly reading probes used to adjust interventions.
+- Completed graduate study in Special Education at Chapman University while supporting fifth-grade and special education classrooms through instructional rotations and weekly reading probes that informed intervention adjustments.
 
 ### Junior High English Teacher
 
