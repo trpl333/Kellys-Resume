@@ -71,7 +71,7 @@ Chapman University, College of Educational Studies (field supervision) · Orange
 
 Saddleback Valley Unified School District, Rancho Santa Margarita Intermediate · Rancho Santa Margarita, CA · March 2016–June 2017
 
-- Supported students in small-group and one-to-one settings under the education specialist.
+- Supported students in small-group and one-to-one settings with the education specialist.
 - Kept students on Individualized Education Program (IEP) tasks and class routines during lessons.
 - Protected learning time while the specialist moved between groups.
 - Covered transitions, materials, and duty spots so teaching blocks stayed uninterrupted.
